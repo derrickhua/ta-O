@@ -18,6 +18,17 @@ const userSchema = new Schema({
       trim: true,
       minLength: 3,
       required: true
+    },
+    description: {
+      type: String
+    },
+    profileImg: {
+      type: [String],
+      // Default: set an array with an img linked to default
+    },
+    isSeller: {
+      type: Boolean,
+      required: true
     }
 }, {
     timestamps: true,
