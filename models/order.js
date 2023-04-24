@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const serviceSchema = require('./serviceSchema');
+const classSchema = require('./classSchema');
 
-const lineServiceSchema = new Schema({
-  service: serviceSchema
+const lineClassSchema = new Schema({
+  class: classSchema
 }, {
     toJSON: { virtuals: true }
 });
 
-lineServiceSchema.virtual('price').get(function() {
+lineClassSchema.virtual('price').get(function() {
     // 'this' is the embedded lineItem sub-document 
-    return this.service.price
+    return this.class.price
   });
 
 const orderSchema = new Schema({
@@ -19,7 +19,7 @@ const orderSchema = new Schema({
     ref: 'User',
     required: true
   },
-  lineServices: [lineServiceSchema],
+  lineClasses: [lineClassSchema],
   isPaid: { type: Boolean, default: false }
 }, {
   timestamps: true,
@@ -27,11 +27,11 @@ const orderSchema = new Schema({
 });
 
 orderSchema.virtual('orderTotal').get(function() {
-  return this.lineServices.reduce((total, service) => total + service.price, 0);
+  return this.lineclasses.reduce((total, class) => total + class.price, 0);
 });
 
 orderSchema.virtual('totalQty').get(function() {
-  return this.lineServices.length
+  return this.lineClasses.length
 });
 
 orderSchema.virtual('orderId').get(function() {

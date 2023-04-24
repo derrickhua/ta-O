@@ -1,0 +1,4 @@
+.catList {
+    display: flex; 
+    flex-direction: row;
+}

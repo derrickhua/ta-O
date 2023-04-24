@@ -1,3 +1,7 @@
 .dropdown {
     display: inline;
 }
+
+nav > span {
+    display: inline;
+}

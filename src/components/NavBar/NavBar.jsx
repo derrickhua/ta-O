@@ -1,30 +1,52 @@
 import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
 import * as userService from '../../utilities/usersService'
-import LoginForm from "../LoginForm/LoginForm";
-import SignUpForm from "../SignUpForm/SignUpForm";
-import Modal from '../Modal/Modal'
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import './NavBar.css'
-import { useState, useEffect } from "react";
-import MyModal from "../Modal/Modal";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom"
+import LoginModal from "../LoginModal/LoginModal";
+import SignUpModal from "../SignUpForm/SignUpModal"
 
 export default function NavBar({ user, setUser }) {
-    const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState({
+        login: false,
+        signUp: false
+    });
+    const navigate = useNavigate();
+    function handleLogClose() {
+        setShowModal({
+            login:false, signUp: false
+        });
+    }  
+    function handleLogShow(){
+        setShowModal({
+            login:true, signUp: false
+        });
+    }  
+    function handleSUClose() {
+        setShowModal({
+            login:false, signUp: false
+        });
+    }  
+    function handleSUShow(){
+        setShowModal({
+            login:false, signUp: true
+        });
+    }  
+    function redirectHomePage(){
+        navigate(`/`)
+    }
+    function handleLogOut() {
+        userService.logOut();
+        navigate(`/`)
+        setUser(null);
+        
+    }
 
-    function handleClose() {
-        setShowModal(false);
-    }  
-    function handleShow(){
-        setShowModal(true);
-    }  
-    // function handleLogOut() {
-    //     // Delegate to the users-service
-    //     userService.logOut();
-    //     // Update state will also cause a re-render
-    //     setUser(null);
-    // }
+    function logUser() {
+        console.log(user)
+    }
     return (
         <>
             <nav>
@@ -36,17 +58,33 @@ export default function NavBar({ user, setUser }) {
                 FUTURE SEARCH BAR
                 </span>
                 &nbsp; | &nbsp;            
+                <span >
+                {user && <> Welcome, {user.name}</>}
+                {user && <>&nbsp; | &nbsp;</>}      
+                </span>
+                <span >
+                {user && <> Shopping Cart</>}
+                {user && <>&nbsp; | &nbsp;</>}     
+                </span>
+                <span >
+                {/* {somethinginShoppingCart && <>Future Shopping Cart</>}
+                &nbsp; | &nbsp;      */}
+                {user && <NavLink to="/guiding">Switch to Guiding</NavLink>
+                }   
+                {user && <>&nbsp; | &nbsp;</>}  
+                </span>
                 <span>
-                {user && <p> Welcome, {user.name}</p>}
-                &nbsp; | &nbsp; 
                 <DropdownButton id="dropdown-basic-button" title="Profile">
-                    <Dropdown.Item onClick={handleShow}>Log In</Dropdown.Item>
-                    <Dropdown.Item>Sign Up</Dropdown.Item>
-                    <Dropdown.Item>Help</Dropdown.Item>
-                    {user && <Dropdown.Item>LogOut</Dropdown.Item>}
+                    {!user && <Dropdown.Item onClick={handleLogShow}>Log In</Dropdown.Item>}
+                    {!user && <Dropdown.Item onClick={handleSUShow}>Sign Up</Dropdown.Item>}
+                    {user && <Dropdown.Item>Account</Dropdown.Item>}
+                    {user && <Dropdown.Item>Manage Classes</Dropdown.Item>}
+                    <Dropdown.Item onClick={logUser}>Help</Dropdown.Item>
+                    {user && <Dropdown.Item onClick={handleLogOut}>LogOut</Dropdown.Item>}
                 </DropdownButton>
                 </span>
-                <MyModal show={showModal} handleClose={handleClose} handleShow={handleShow}/>
+                <LoginModal show={showModal.login} handleClose={handleLogClose} handleShow={handleLogShow} setUser={setUser} redirectHomePage={redirectHomePage}/>
+                <SignUpModal show={showModal.signUp} handleClose={handleSUClose} handleShow={handleSUShow} setUser={setUser} redirectHomePage={redirectHomePage}/>
             </nav>
         </>
 

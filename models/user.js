@@ -26,11 +26,8 @@ const userSchema = new Schema({
       type: [String],
       // Default: set an array with an img linked to default
     },
-    isSeller: {
-      type: Boolean,
-      required: true
-    }
-}, {
+}, 
+{
     timestamps: true,
     toJSON: {
         transform: function(doc, ret) {
