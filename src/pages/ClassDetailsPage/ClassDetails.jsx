@@ -22,17 +22,13 @@ export default function ClassDetails({user, categories}) {
     
     const [error, setError] = useState('');
 
-    let categoryOptions = categories.map((category) =>(
-        <option value={category}>{category}</option>
-    ))
-
     function makeSelect(categoryArray){
         return <select name='category' onChange={handleChange}>
           {categoryArray.map((category) => <option key={category} value={category}>{category}</option>)}
         </select>
     }
-    let selectForm = makeSelect(categories)
 
+    let selectForm = makeSelect(categories)
 
     function handleChange(evt) {
         setChangeClass({ ...changeClass, [evt.target.name]: evt.target.value });
@@ -42,9 +38,7 @@ export default function ClassDetails({user, categories}) {
     async function handleSubmit(evt) {
         evt.preventDefault();
         try {
-        console.log(changeClass)
         const theClass = await classAPI.updateClass(id, changeClass);
-        console.log(theClass)
         } catch {
         setError('Class update Failed - Try Again');
         }
@@ -54,7 +48,7 @@ export default function ClassDetails({user, categories}) {
     const goToUserClasses = () => navigate(`/guiding`);
     async function deleteClass(id){
         try {
-            const deletedClass = await classAPI.deleteClass(id);
+            await classAPI.deleteClass(id);
             goToUserClasses()
         } catch {
             setError('Class Delete Failed - Try Again');

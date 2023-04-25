@@ -6,6 +6,8 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 router.get('/', classesCtrl.index);
 // GET /api/classes/user
 router.get('/user', classesCtrl.indexUser);
+// GET /api/classes/user
+router.get('/userBought', classesCtrl.indexBought);
 // GET /api/classes/:id
 router.get('/:id', classesCtrl.show);
 // GET /api/classes/create

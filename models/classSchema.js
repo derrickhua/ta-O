@@ -9,7 +9,9 @@ const classSchema = new Schema({
   price: { type: Number, required: true, default: 0},
   images: { type: [String]},
   seller: { type: Schema.Types.ObjectId, ref: 'User', required: true},
-  username: {type: String}
+  username: {type: String},
+  isPaid: { type: Boolean, default: false },
+  buyer: {type: Schema.Types.ObjectId, ref: 'User'}
 }, {
   timestamps: true
 });

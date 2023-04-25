@@ -11,6 +11,7 @@ export function getAllOfUser() {
   return sendRequest(`${BASE_URL}/user`);
 }
 
+
 export function getById(id) {
   return sendRequest(`${BASE_URL}/${id}`);
 }
@@ -25,6 +26,10 @@ export function updateClass(id, classChanges) {
 
 export function deleteClass(id) {
   return sendRequest(`${BASE_URL}/${id}`,'DELETE');
+}
+
+export function getBoughtByUser() {
+  return sendRequest(`${BASE_URL}/userBought`);
 }
 
 

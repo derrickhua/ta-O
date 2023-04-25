@@ -8,13 +8,12 @@ export default function GuidePage({ categories, user, setUser }) {
     description: '',
     city: '',
     duration: '',
-    category: '',
+    category: 'Sports',
     price: 0,
     images: [''],
-    seller: user._id,
-    username: user.name,
     });
     const [classes, setClasses] = useState([]);
+    const [soldClasses, setSoldClasses] = useState([]);
     const [error, setError] = useState('');
 
 
@@ -23,12 +22,15 @@ export default function GuidePage({ categories, user, setUser }) {
         {categoryArray.map((category) => <option key={category} value={category}>{category}</option>)}
       </select>
     }
+
     let selectForm = makeSelect(categories)
     
-    // console.log(categoryOptions[0].props.value)
     async function getClasses() {
       const classes = await classAPI.getAllOfUser();
-      setClasses(classes);
+      let regClasses = classes.filter((klass) => klass.isPaid === false)
+      let soldClasses = classes.filter((klass) => klass.isPaid === true)
+      setClasses(regClasses);
+      setSoldClasses(soldClasses);
     }
 
     useEffect(function() {
@@ -76,7 +78,9 @@ export default function GuidePage({ categories, user, setUser }) {
       </div>      
       
       <h1>My Classes</h1>
-      <ClassCardBox classes={classes}/>
+      <ClassCardBox classes={classes} user={user}/>
+      <h1>My Classes that were Bought</h1>
+      <ClassCardBox classes={soldClasses} user={user}/>
       </>
 
     );

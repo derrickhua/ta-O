@@ -6,6 +6,8 @@ import { getUser } from '../../utilities/usersService';
 import HomePage from '../HomePage/HomePage'
 import GuidePage from '../GuidePage/GuidePage'
 import ClassDetails from '../ClassDetailsPage/ClassDetails'
+import ShoppingCartPage from '../ShoppingCartPage/ShoppingCartPage'
+import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 
 //Components
 import NavBar from '../../components/NavBar/NavBar';
@@ -18,17 +20,14 @@ export default function App() {
 
   return (
   <main className="App">
-    <NavBar user={ user } setUser={setUser}/>
-    {/* if user is a customer then give ability to like/ add to cart / to purchase / to send messages/ edit profile}
-    {/* if user is a seller then give ability to CRUD services / edit profile */}
-    {/* ensure that logged in is required for certain routes */}
-    {/* this just means that user or not they should be able to see the homepage
-    they should be able to see details and profile of sellers and services */}
+    <NavBar user={ user } setUser={setUser} />
     <>
       <Routes>
         <Route path="/" element={<HomePage user={ user } categories={categories}/>} /> 
         <Route path="/guiding" element={<GuidePage categories={categories} user={user} setUser={setUser}/>} /> 
         <Route path="/class/:id" element={<ClassDetails user={ user } categories={categories}/>} /> 
+        <Route path="/history" element={<OrderHistoryPage user={ user } categories={categories}/>} /> 
+        <Route path="/shoppingCart" element={<ShoppingCartPage user={ user } categories={categories}/>} /> 
         {/* <Route path="/history" element={<HistoryPage />} />
         <Route path="/account" element={<AccountSettingsPage />} /> 
         <Route path="/wishlist" element={<WishListPage />} /> 

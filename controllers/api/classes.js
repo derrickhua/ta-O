@@ -3,6 +3,7 @@ const Classes = require('../../models/class');
 module.exports = {
   index,
   indexUser,
+  indexBought,
   show,
   create,
   update,
@@ -12,11 +13,10 @@ module.exports = {
 async function index(req, res) {
   let classes = [];
   try {
-    classes = await Classes.find({}).sort('name').where('seller').nin([req.user._id]).exec();   
+    classes = await Classes.find({ isPaid: { $ne: true  }, seller: { $ne: [req.user._id]}}).sort('name').exec();
   } catch {
-    classes = await Classes.find({}).sort('name').exec(); 
+    classes = await Classes.find({isPaid: { $ne: true  }}).sort('name').exec(); 
   }
-
   res.json(classes);
 }
 
@@ -30,6 +30,15 @@ async function indexUser(req, res) {
   }
 }
 
+async function indexBought(req, res) {
+  try {
+    const classes = await Classes.find({buyer:req.user._id})
+    res.json(classes)
+  } catch(err) {
+    console.log(err)
+    res.status(400).json(err)
+  }
+}
 
 async function show(req, res) {
   const specificClass = await Classes.findById(req.params.id);
@@ -38,6 +47,8 @@ async function show(req, res) {
 
 async function create(req, res) {
     try {
+        req.body.seller = req.user._id
+        req.body.username = req.user.name
         const newClass = await Classes.create(req.body);
         res.json(newClass);
     } catch(err) {
