@@ -5,9 +5,8 @@ export default function LineItem({ specificClass, isPaid }) {
   return (
     <div className="LineItem">
       <div>
-        <span>{specificClass.name}</span>
+        <span>{specificClass.name}&nbsp;&nbsp;</span>
         <span>{specificClass.price.toFixed(2)}</span>
-        <span>{specificClass.buyer && specificClass.buyer.toString()}</span>
       </div>
     </div>
   );

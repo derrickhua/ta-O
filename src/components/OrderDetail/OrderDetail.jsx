@@ -1,5 +1,8 @@
 import LineItem from '../LineItem/LineItem'
 // Used to display the details of any order, including the cart (unpaid order)
+import './OrderDetail.css'
+import Button from 'react-bootstrap/Button';
+
 export default function OrderDetail({ order, handleCheckout }) {
   if (!order) return null;
   console.log(order)
@@ -19,7 +22,7 @@ export default function OrderDetail({ order, handleCheckout }) {
           :
           <span>NEW ORDER</span>
         }
-        <span>{new Date(order.updatedAt).toLocaleDateString()}</span>
+        <span>  {new Date(order.updatedAt).toLocaleDateString()}</span>
       </div>
       <div>
         {lineClasses.length ?
@@ -29,14 +32,17 @@ export default function OrderDetail({ order, handleCheckout }) {
               {order.isPaid ?
                 <span className="right">TOTAL&nbsp;&nbsp;</span>
                 :
-                <button
+                <>
+                <span className="right">TOTAL: ${order.orderTotal.toFixed(2)}</span>
+                <Button
                   className="btn-sm"
+                  variant='outline-secondary'
                   onClick={handleCheckout}
                   disabled={!lineClasses.length}
-                >CHECKOUT</button>
+                >CHECKOUT</Button>                
+                </>
+
               }
-              <span>{order.totalQty} Classes</span>
-              <span className="right">${order.orderTotal.toFixed(2)}</span>
             </section>
           </>
           :

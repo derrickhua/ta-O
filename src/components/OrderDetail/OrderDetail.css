@@ -1,0 +1,21 @@
+.OrderDetail {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.right {
+    display: block;
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.LineItem {
+    display: flex;
+    justify-content: center;
+}
+

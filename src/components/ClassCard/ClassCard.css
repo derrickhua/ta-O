@@ -18,3 +18,8 @@ img {
     justify-content: space-between;
     align-items: center;
 }
+
+.name:hover {
+    color: #A8C990;
+    cursor: pointer;
+}

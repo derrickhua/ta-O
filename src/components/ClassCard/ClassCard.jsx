@@ -23,10 +23,10 @@ export default function ClassCard({user, specificClass, setCart}) {
           bg='light'
           key='Light' 
           style={{ width: '15rem', margin:'10px'}}
-          onClick={goToDetails}>
+          >
           <Card.Img variant="top" src={specificClass.images} />
           <Card.Body>
-            <Card.Title className='name'><h3>{specificClass.name}</h3> <h6>${specificClass.price.toFixed(2)}</h6></Card.Title>
+            <Card.Title className='name' onClick={goToDetails}><h3>{specificClass.name}</h3> <h6>${specificClass.price.toFixed(2)}</h6></Card.Title>
             <Card.Text className='sellername'>
               <span><h6>by {specificClass.username}</h6> </span> 
               {(user && user._id !== specificClass.seller) && <Button variant="dark" onClick={()=>handleAddToOrder(specificClass)}>+</Button>}

@@ -23,7 +23,8 @@ export default function ShoppingCartPage({ user, setUser }) {
   }
 
   return (
-    <main className="NewOrderPage">
+    <main className="shoppingCart">
+      <h2>Shopping Cart</h2>
       <OrderDetail
         order={cart}
         handleCheckout={handleCheckout}

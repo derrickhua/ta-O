@@ -1,0 +1,10 @@
+.OrderList {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    width: 30%;
+    border: 3px dotted #A8C990;
+    border-radius: 20px;
+    color: #A8C990;
+    font-size: 1.25em;
+}

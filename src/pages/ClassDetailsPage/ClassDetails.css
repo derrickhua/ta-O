@@ -1,0 +1,32 @@
+.classDetailsPage {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+button, select {
+    width: 189px;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hiddenForm {
+    width: 10%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.classDetails{
+    display: flex;
+    flex-direction: row;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 20px;
+}

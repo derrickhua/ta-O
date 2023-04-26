@@ -89,13 +89,13 @@ export default function NavBar({ user, setUser }) {
     async function getMyClasses() {
         const classes = await classAPI.getBoughtByUser();
         setBClasses(classes)
+        let classList = bookedClasses.map((klass) => <li>{klass.name} by {klass.username}</li>)
+        setClassList(classList)  
     }
     useEffect(function() {
         if (user) {
-            getMyClasses()            
+            getMyClasses()           
         }
-        let classList = bookedClasses.map((klass) => <li>{klass.name} by {klass.username}</li>)
-        setClassList(classList)
       }, []);
 
     return (
@@ -120,9 +120,11 @@ export default function NavBar({ user, setUser }) {
                         {!user && <NavDropdown.Item onClick={handleLogShow}>Log In</NavDropdown.Item>}
                         {!user && <NavDropdown.Item onClick={handleSUShow}>Sign Up</NavDropdown.Item>}
                         {user && <NavDropdown.Item>Account</NavDropdown.Item>}
-                        {user && <NavDropdown.Item onClick={handleBookShow}>Booked Classes</NavDropdown.Item>}
-                        {user && <NavDropdown.Item onClick={redirectOrderHistory}>Shopping Cart</NavDropdown.Item>}
-                        {user && <NavDropdown.Item onClick={redirectShoppingCart}>Order History</NavDropdown.Item>}
+                        {user && <NavDropdown.Item onClick={() => {
+                            handleBookShow() 
+                            getMyClasses()}}>Booked Classes</NavDropdown.Item>}
+                        {user && <NavDropdown.Item onClick={redirectShoppingCart}>Shopping Cart</NavDropdown.Item>}
+                        {user && <NavDropdown.Item onClick={redirectOrderHistory}>Order History</NavDropdown.Item>}
                         {user && <NavDropdown.Item onClick={redirectGuidePage}>Manage My Classes</NavDropdown.Item>}
                         <NavDropdown.Item onClick={logUser}>Help</NavDropdown.Item>
                         {user && <NavDropdown.Item onClick={handleLogOut}>LogOut</NavDropdown.Item>}
@@ -131,8 +133,6 @@ export default function NavBar({ user, setUser }) {
                 </Navbar.Collapse>
             </Container>
             </Navbar>
-
-
             <LoginModal show={showModal.login} handleClose={handleLogClose} handleShow={handleLogShow} setUser={setUser} redirectHomePage={redirectHomePage}/>
             <SignUpModal show={showModal.signUp} handleClose={handleSUClose} handleShow={handleSUShow} setUser={setUser} redirectHomePage={redirectHomePage}/>
             <BCModal show={showModal.bookedClasses} handleClose={handleBookClose} handleShow={handleBookShow} classList={classList}/>

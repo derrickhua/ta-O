@@ -7,11 +7,10 @@ export default function OrderListItem({ order, setCart }) {
     return (
         <div className="OrderListItem" onClick={()=> setCart(order)}>
             <div className="importantInfo">
-                <span>Order Id: {order.orderId}</span> 
-                <span>${order.orderTotal.toFixed(2)}</span>
+                <span>Order Id: {order.orderId}&nbsp;&nbsp;</span> 
             </div>
             <div className="secondaryInfo">
-            <span>{date}</span><span>{order.totalQty} Items</span>
+            <span>{date}</span>
             </div>
         </div>
     );

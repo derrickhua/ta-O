@@ -23,8 +23,9 @@ export default function OrderHistoryPage({ user, setUser }) {
 
   return (
     <main className="OrderHistoryPage">
+      <h2>Order History</h2>
       {/* Render an OrderList component (needs to be coded) */}
-      <OrderList history={prevOrders} setCart={setCart} order={cart} />
+      {(prevOrders.length > 0) && <OrderList history={prevOrders} setCart={setCart} order={cart} />}
       {/* Render the OrderDetail component */}
       <OrderDetail order={cart}
       handleChangeQty={null} 

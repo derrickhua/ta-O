@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import * as classAPI from '../../utilities/classesApi'
+
 import './ClassDetails.css'
-import { useParams } from 'react-router-dom';
-import { useNavigate } from "react-router-dom"
+import Button from 'react-bootstrap/Button';
 
 export default function ClassDetails({user, categories}) {
     const [specificClass, setsSpecificClass] = useState([])
@@ -55,45 +56,70 @@ export default function ClassDetails({user, categories}) {
         }
     }
     
+    const [showEdit, setShowEdit] = useState(false)
 
+    function changeShow() {
+        if (showEdit) {
+            setShowEdit(false)
+        } else {
+            setShowEdit(true)
+        }
+    }
   
     return (
     <>
-    { (user !== null && user._id === specificClass.seller) &&
-    <div>
-    <div className="form-container">
-        <form autoComplete="off" onSubmit={handleSubmit}>
-        <label>Class Name</label>
-        <input type="text" name="name" placeholder={specificClass.name} onChange={handleChange} />
-        <label>Description</label>
-        <input type="text" name="description" placeholder={specificClass.description} onChange={handleChange}/>
-        <label>City</label>
-        <input type="text" name="city" placeholder={specificClass.city} onChange={handleChange}/>
-        <label>Price</label>
-        <input type="number" name="price" placeholder={specificClass.price} onChange={handleChange}/>
-        {/* in the future import html duration picker */}
-        <label>Duration</label>
-        <input type="text" name="duration" placeholder={specificClass.duration} onChange={handleChange}/>
-        <label>Category</label>
-        {selectForm}
-        <button type="submit" onClick={()=>getClass(id)}>Change Class</button>
-        </form>
-    </div>
-    <button onClick={()=>deleteClass(id)}>Delete THIS CLASS</button>
+    <div className='classDetailsPage'>
+        <div className='classDetails'>
+            <img src={specificClass.images} style={{margin: "0px 20px"}}></img>
+            <div style={{margin: "20px auto"}}>
+                <h6>Class Name: {specificClass.name}</h6>
+                <h6>Description: {specificClass.description}</h6>
+                <h6>City: {specificClass.city}</h6>
+                <h6>Price: ${specificClass.price}</h6>
+                <h6>Duration: {specificClass.duration}</h6>
+                <h6>Category: {specificClass.category}</h6>
+                <h6>by: {specificClass.username}</h6>
+            </div>
 
-    <p className="error-message">&nbsp;{error}</p>
-</div>          
-    }    
+        </div>
 
-    <div>
-        <h6>{specificClass.name}</h6>
-        <h6>{specificClass.description}</h6>
-        <h6>{specificClass.city}</h6>
-        <h6>{specificClass.price}</h6>
-        <h6>{specificClass.duration}</h6>
-        <h6>{specificClass.category}</h6>
-        <h6>by: {specificClass.username}</h6>
+        { (user !== null && user._id === specificClass.seller) &&
+            <>
+           <div className='hiddenForm'>
+
+            {showEdit && 
+                <div className="formContainer" >
+                    <form autoComplete="off" onSubmit={handleSubmit}>
+                    <label>Class Name</label>
+                    <input type="text" name="name" placeholder={specificClass.name} onChange={handleChange} />
+                    <label>Description</label>
+                    <input type="text" name="description" placeholder={specificClass.description} onChange={handleChange}/>
+                    <label>City</label>
+                    <input type="text" name="city" placeholder={specificClass.city} onChange={handleChange}/>
+                    <label>Price</label>
+                    <input type="number" name="price" placeholder={specificClass.price} onChange={handleChange}/>
+                    {/* in the future import html duration picker */}
+                    <label>Duration</label>
+                    <input type="text" name="duration" placeholder={specificClass.duration} onChange={handleChange}/>
+                    <label>Category</label>
+                    {selectForm}
+                    <button type="submit" onClick={()=>getClass(id)}>Change Class</button>
+                    </form>
+                    <p className="error-message">&nbsp;{error}</p>                        
+                </div>        
+
+            }
+        </div>             
+        <Button variant='outline-secondary' onClick={changeShow}>Edit</Button>
+        <Button variant='outline-secondary' onClick={()=>deleteClass(id)}>DELETE</Button>            
+        </>
+ 
+
+
+             
+        }   
     </div>
+
     </>
     );
   }
