@@ -9,24 +9,6 @@ The service primarily being sold in this market are classes provided by the guid
 
 # Screenshots
 
-## Initial Page to Login
-[Imgur](https://i.imgur.com/NQszo8z.jpg)
-
-## Home Page
-[Imgur](https://i.imgur.com/gt9ocwl.jpg)
-
-## Add New Long Term Habit
-[Imgur](https://i.imgur.com/OYfYqwp.jpg)
-
-## Home Page With Long Term Habit
-[Imgur](https://i.imgur.com/BtSBFoy.jpg)
-
-## Long Term Habit Detail Page
-[Imgur](https://i.imgur.com/pKORzbV.jpg)
-
-## Long Term Habit Add Log Page
-[Imgur](https://i.imgur.com/E29wDCg.jpg)
-
 # List of Technologies Used
 
 * HTML
@@ -43,12 +25,14 @@ The service primarily being sold in this market are classes provided by the guid
 * Axios
 * Bcrypt
 
-# Getting Started
 
-## Link: https://fargin.herokuapp.com/oauth2callback
-## Trello Board: https://trello.com/invite/b/9hyye7kg/ATTI689082b821ccc6d16a7c14448579a78e9C95868F/productivity-tracker
+## Link: https://ta-o.herokuapp.com/
 
 # IceBox Items
-* Make a way to visualize the Logs similar to GitHub Commit Graph/HeatMap
-* Make the daily tasks/todo page usable
-* Make the review/journal page usable and make it so that each review log can be seen/accessable
+* Make Working Search Bar
+* Add in Real Time Messaging System
+* Add More Attributes for User/Teacher including Profile img Upload, Booking system
+* Add in HTML Duration Picker
+* Add  multiple image upload for each service
+* Pages to work on: Account/Help/ 
+* Overall work on better CSS / Design layout more symbols, logos
