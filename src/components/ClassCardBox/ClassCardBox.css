@@ -1,6 +1,7 @@
 .ClassCardBox {
-    margin-top: 50px;
+    margin: 30px auto;
     display:flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
 }

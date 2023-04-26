@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from "react-router-dom"
 import * as ordersAPI from '../../utilities/ordersApi'
+import './ClassCard.css'
 export default function ClassCard({user, specificClass, setCart}) {
 
     const navigate = useNavigate();
@@ -21,16 +22,17 @@ export default function ClassCard({user, specificClass, setCart}) {
           <Card
           bg='light'
           key='Light' 
-          style={{ width: '18rem', margin:'10px'}}>
-          <Card.Img variant="top" src={specificClass.images[0]} />
+          style={{ width: '15rem', margin:'10px'}}
+          onClick={goToDetails}>
+          <Card.Img variant="top" src={specificClass.images} />
           <Card.Body>
-            <Card.Title className='name'><h3>{specificClass.name}</h3></Card.Title>
-            <Card.Text className='sellername'><h6>{specificClass.username}</h6></Card.Text>
-            <Card.Text className='description'>
-              {specificClass.description}
+            <Card.Title className='name'><h3>{specificClass.name}</h3> <h6>${specificClass.price.toFixed(2)}</h6></Card.Title>
+            <Card.Text className='sellername'>
+              <span><h6>by {specificClass.username}</h6> </span> 
+              {(user && user._id !== specificClass.seller) && <Button variant="dark" onClick={()=>handleAddToOrder(specificClass)}>+</Button>}
             </Card.Text>
-            <Button variant="dark" onClick={goToDetails}>Go to Details</Button>
-            {(user && user._id !== specificClass.seller) && <Button variant="dark" onClick={()=>handleAddToOrder(specificClass)}>Add to Cart</Button>}
+            <Card.Text className='description'>
+            </Card.Text>
           </Card.Body>
         </Card>      
     );

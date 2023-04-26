@@ -1,3 +1,20 @@
-Card {
-    
+img {
+    height: 250px;
+}
+
+.sellername {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn.btn-dark {
+    display:inline;
+    width: 40px;
+}
+
+.name {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

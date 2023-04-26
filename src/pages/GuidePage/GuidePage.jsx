@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import * as classAPI from '../../utilities/classesApi'
-import './GuidePage.css'
 import ClassCardBox from '../../components/ClassCardBox/ClassCardBox';
+// CSS related stuff
+import './GuidePage.css'
+import Button from 'react-bootstrap/Button';
 
 export default function GuidePage({ categories, user, setUser }) {
     const [newClass, setNewClass] = useState({
@@ -57,6 +59,7 @@ export default function GuidePage({ categories, user, setUser }) {
 
     // const [status, setStatus] = useState(null)
     const [photo, setPhoto] = useState(null)
+    const [photoPrev, setPhotoPrev] = useState(null)
     async function handleImgChange(evt){
         setPhoto(evt.target.files[0])
     }
@@ -67,22 +70,27 @@ export default function GuidePage({ categories, user, setUser }) {
         data.append('file', photo)
         classAPI.uploadImage(data).then(res => {
           setNewClass({ ...newClass, images: res.data });
+          setPhotoPrev(res.data)
           setError('');
         })
     }
   
     return (
       <>
-      <div>
+      <div className='topGuidePage'>
 
         <div className="form-container">
-        <form onSubmit={handleImageUpload}>
-                  <div>
-                      <input type="file" name="image" id="image" accept="image/*" onChange={handleImgChange} />
-                      <button type="submit" >Upload</button>
-                  </div>
-          </form>
-          <form autoComplete="off" onSubmit={handleSubmit}>
+          <div className='imgUpload'>
+            <div className='previewImg'>
+                <img src={photoPrev}></img>
+            </div>
+            <form onSubmit={handleImageUpload} className='imgUploadForm'>
+                    <input type="file" name="image" id="image" accept="image/*" onChange={handleImgChange} />
+                    <Button variant="outline-secondary" type='submit'>Upload</Button>
+            </form>            
+          </div>
+
+          <form autoComplete="off" onSubmit={handleSubmit} className='classMakeForm'>
             <label>Class Name</label>
             <input type="text" name="name" value={newClass.name} onChange={handleChange} required />
             <label>Description</label>
@@ -96,17 +104,18 @@ export default function GuidePage({ categories, user, setUser }) {
             <input type="text" name="duration" value={newClass.duration} onChange={handleChange} required />
             <label>Category</label>
             {selectForm }
-            <label>Images</label>
-            <button type="submit" onClick={getClasses} >Make New Class</button>
+            <Button variant="outline-secondary" type="submit" onClick={getClasses}>Make New Class</Button>
           </form>
+          <p className="error-message">&nbsp;{error}</p>
         </div>
-        <p className="error-message">&nbsp;{error}</p>
       </div>      
-      
-      <h1>My Classes</h1>
+    <div className='botGuidePage'>
+      <h3>My Classes</h3>
       <ClassCardBox classes={classes} user={user}/>
-      <h1>My Classes that were Bought</h1>
-      <ClassCardBox classes={soldClasses} user={user}/>
+      <h3>My Classes that were Bought</h3>
+      <ClassCardBox classes={soldClasses} user={user}/>     
+    </div>
+ 
       </>
 
     );

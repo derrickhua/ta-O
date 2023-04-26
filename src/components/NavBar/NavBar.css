@@ -5,3 +5,72 @@
 nav > span {
     display: inline;
 }
+
+.brandLogo {
+    color: black;
+    text-decoration: none;
+    font-size: 1.25em;
+}
+
+.brandLogo:hover {
+    color: #A8C990;
+}
+
+.dropDon.nav-item.dropdown:hover {
+    --bs-nav-link-hover-color: #A8C990;
+}
+
+.me-auto {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.d-flex {
+    margin: 0 auto;
+    align-items: center;
+}
+
+.search.btn {
+    vertical-align: middle;
+    --bs-btn-font-size: 0.9rem;
+}
+
+.btn-outline-secondary:hover{
+    --bs-btn-hover-color: #A8C990;
+}
+
+
+.search.me-2 {
+    width: 100%;
+    margin-left: 120px;
+}
+
+.navbar {
+    height: 95px;
+    font-size: 1.25em;
+}
+
+
+.realNavLink {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: 0.75em;
+    font-weight: var(--bs-nav-link-font-weight);
+    color: var(--bs-nav-link-color);
+    text-decoration: none;
+    margin-right: 10px;
+    margin-top: 2.5px;
+    transition: color .15s ease-in-out,
+    background-color .15s ease-in-out,
+    border-color .15s ease-in-out;
+}
+
+.realNavLink:hover {
+    color: #A8C990;
+} 
+
+
+
+
+

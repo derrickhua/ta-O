@@ -1,13 +1,82 @@
+.topGuidePage {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 1500px;
+    margin-bottom: 20px;
+}
+
 .form-container > form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-input, select, form > button {
-    width: 40%;
+.form-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-left:40px;
+}
+
+.imgUpload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 35%;
+    height: 100%;
+    padding: 20px;
+}
+
+.previewImg{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.imgUploadForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.classMakeForm {
+    width: 55%;
+    padding: 20px;
+}
+
+.imgUpload,.classMakeForm {
+    border: 4px solid #A8C990;
+    border-radius: 15px;
+}
+
+
+.classMakeForm > input, .classMakeForm >select,.classMakeForm > button, .imgUploadForm > button {
+    width: 60%;
+}
+
+.classMakeForm > input {
+    border-radius: 8px;
+    border-color: #c2c7cc;
 }
 
 #image {
     width: 60%;
 }
+
+.previewImg {
+    height: 250px;
+    width: 238px;
+}
+
+.botGuidePage {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+

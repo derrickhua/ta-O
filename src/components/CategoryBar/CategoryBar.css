@@ -1,4 +1,15 @@
 .catList {
     display: flex; 
     flex-direction: row;
+    width: 50%;
+    margin: 0px auto;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+button {
+    width: 120px;
+    height: 40px;
 }

@@ -1,14 +1,28 @@
-import { NavLink } from "react-router-dom";
+// important utilities
 import * as userService from '../../utilities/usersService'
 import * as classAPI from '../../utilities/classesApi'
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import './NavBar.css'
+// important functions
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"
+
+// CSS File
+import './NavBar.css'
+
+// BootStrap Css Components
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
+
+// Components
 import LoginModal from "../LoginModal/LoginModal";
 import SignUpModal from "../SignUpForm/SignUpModal"
 import BCModal from "../BookedClassModal/BCModal"
+
+
 export default function NavBar({ user, setUser }) {
     const [showModal, setShowModal] = useState({
         login: false,
@@ -56,6 +70,9 @@ export default function NavBar({ user, setUser }) {
     function redirectGuidePage(){
         navigate(`/guiding`)
     }
+    function redirectShoppingCart(){
+        navigate(`/shoppingCart`)
+    }
     function handleLogOut() {
         userService.logOut();
         navigate(`/`)
@@ -83,41 +100,42 @@ export default function NavBar({ user, setUser }) {
 
     return (
         <>
-            <nav>
-                <span>
-                <NavLink to="/">TA-O</NavLink>    
-                </span>
-                &nbsp; | &nbsp;            
-                <span>
-                FUTURE SEARCH BAR
-                </span>
-                &nbsp; | &nbsp;            
-                <span >
-                {user && <NavLink to="/shoppingCart">Shopping Cart</NavLink>}
-                {user && <>&nbsp; | &nbsp;</>}     
-                </span>
-                <span >
-                {user && <NavLink to="/guiding">Switch to Guiding</NavLink>
-                }   
-                {user && <>&nbsp; | &nbsp;</>}  
-                </span>
-                <span>
-                <DropdownButton id="dropdown-basic-button" title="Profile">
-                    {!user && <Dropdown.Item onClick={handleLogShow}>Log In</Dropdown.Item>}
-                    {!user && <Dropdown.Item onClick={handleSUShow}>Sign Up</Dropdown.Item>}
-                    {user && <Dropdown.Item>Account</Dropdown.Item>}
-                    {user && <Dropdown.Item onClick={handleBookShow}>Booked Classes</Dropdown.Item>}
-                    {user && <Dropdown.Item onClick={redirectOrderHistory}>Order History</Dropdown.Item>}
-                    {user && <Dropdown.Item onClick={redirectGuidePage}>Manage My Classes</Dropdown.Item>}
-                    <Dropdown.Item onClick={logUser}>Help</Dropdown.Item>
-                    {user && <Dropdown.Item onClick={handleLogOut}>LogOut</Dropdown.Item>}
-                </DropdownButton>
-                </span>
-                <LoginModal show={showModal.login} handleClose={handleLogClose} handleShow={handleLogShow} setUser={setUser} redirectHomePage={redirectHomePage}/>
-                <SignUpModal show={showModal.signUp} handleClose={handleSUClose} handleShow={handleSUShow} setUser={setUser} redirectHomePage={redirectHomePage}/>
-                <BCModal show={showModal.bookedClasses} handleClose={handleBookClose} handleShow={handleBookShow} classList={classList}/>
+            <Navbar bg="light" expand="lg">
+            <Container>
+                <Navbar.Brand><NavLink to="/" className='brandLogo'>TA-O</NavLink></Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                    <Form className="d-flex">
+                        <Form.Control
+                            type="search"
+                            placeholder="..."
+                            className="me-2 search"
+                            aria-label="Search"
+                            />
+                            <Button variant="outline-secondary" className='search'>Search</Button>
+                    </Form>
+                    {user && <NavLink to="/guiding" className='realNavLink'>Become a Guide</NavLink>} 
+                    <NavDropdown title="Profile" id="basic-nav-dropdown" className='dropDon'>
+                        {!user && <NavDropdown.Item onClick={handleLogShow}>Log In</NavDropdown.Item>}
+                        {!user && <NavDropdown.Item onClick={handleSUShow}>Sign Up</NavDropdown.Item>}
+                        {user && <NavDropdown.Item>Account</NavDropdown.Item>}
+                        {user && <NavDropdown.Item onClick={handleBookShow}>Booked Classes</NavDropdown.Item>}
+                        {user && <NavDropdown.Item onClick={redirectOrderHistory}>Shopping Cart</NavDropdown.Item>}
+                        {user && <NavDropdown.Item onClick={redirectShoppingCart}>Order History</NavDropdown.Item>}
+                        {user && <NavDropdown.Item onClick={redirectGuidePage}>Manage My Classes</NavDropdown.Item>}
+                        <NavDropdown.Item onClick={logUser}>Help</NavDropdown.Item>
+                        {user && <NavDropdown.Item onClick={handleLogOut}>LogOut</NavDropdown.Item>}
+                    </NavDropdown>
+                </Nav>
+                </Navbar.Collapse>
+            </Container>
+            </Navbar>
 
-            </nav>
+
+            <LoginModal show={showModal.login} handleClose={handleLogClose} handleShow={handleLogShow} setUser={setUser} redirectHomePage={redirectHomePage}/>
+            <SignUpModal show={showModal.signUp} handleClose={handleSUClose} handleShow={handleSUShow} setUser={setUser} redirectHomePage={redirectHomePage}/>
+            <BCModal show={showModal.bookedClasses} handleClose={handleBookClose} handleShow={handleBookShow} classList={classList}/>
         </>
 
     );
