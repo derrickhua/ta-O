@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import * as classAPI from '../../utilities/classesApi'
 import './GuidePage.css'
 import ClassCardBox from '../../components/ClassCardBox/ClassCardBox';
+
 export default function GuidePage({ categories, user, setUser }) {
     const [newClass, setNewClass] = useState({
     name: '',
@@ -10,7 +11,7 @@ export default function GuidePage({ categories, user, setUser }) {
     duration: '',
     category: 'Sports',
     price: 0,
-    images: [''],
+    images: '',
     });
     const [classes, setClasses] = useState([]);
     const [soldClasses, setSoldClasses] = useState([]);
@@ -52,11 +53,35 @@ export default function GuidePage({ categories, user, setUser }) {
         setError('New Class Making Failed - Try Again');
       }
     }
+
+
+    // const [status, setStatus] = useState(null)
+    const [photo, setPhoto] = useState(null)
+    async function handleImgChange(evt){
+        setPhoto(evt.target.files[0])
+    }
+
+    async function handleImageUpload(evt){
+        evt.preventDefault()
+        const data = new FormData()
+        data.append('file', photo)
+        classAPI.uploadImage(data).then(res => {
+          setNewClass({ ...newClass, images: res.data });
+          setError('');
+        })
+    }
   
     return (
       <>
       <div>
+
         <div className="form-container">
+        <form onSubmit={handleImageUpload}>
+                  <div>
+                      <input type="file" name="image" id="image" accept="image/*" onChange={handleImgChange} />
+                      <button type="submit" >Upload</button>
+                  </div>
+          </form>
           <form autoComplete="off" onSubmit={handleSubmit}>
             <label>Class Name</label>
             <input type="text" name="name" value={newClass.name} onChange={handleChange} required />
@@ -71,7 +96,8 @@ export default function GuidePage({ categories, user, setUser }) {
             <input type="text" name="duration" value={newClass.duration} onChange={handleChange} required />
             <label>Category</label>
             {selectForm }
-            <button type="submit" onClick={getClasses}>Make New Class</button>
+            <label>Images</label>
+            <button type="submit" onClick={getClasses} >Make New Class</button>
           </form>
         </div>
         <p className="error-message">&nbsp;{error}</p>

@@ -69,13 +69,14 @@ export default function NavBar({ user, setUser }) {
     const [bookedClasses, setBClasses] = useState([])
     const [classList, setClassList] = useState(null)
   
+    async function getMyClasses() {
+        const classes = await classAPI.getBoughtByUser();
+        setBClasses(classes)
+    }
     useEffect(function() {
-        async function getMyClasses() {
-          const classes = await classAPI.getBoughtByUser();
-          setBClasses(classes)
+        if (user) {
+            getMyClasses()            
         }
-        getMyClasses()
-  
         let classList = bookedClasses.map((klass) => <li>{klass.name} by {klass.username}</li>)
         setClassList(classList)
       }, []);
@@ -96,8 +97,6 @@ export default function NavBar({ user, setUser }) {
                 {user && <>&nbsp; | &nbsp;</>}     
                 </span>
                 <span >
-                {/* {somethinginShoppingCart && <>Future Shopping Cart</>}
-                &nbsp; | &nbsp;      */}
                 {user && <NavLink to="/guiding">Switch to Guiding</NavLink>
                 }   
                 {user && <>&nbsp; | &nbsp;</>}  

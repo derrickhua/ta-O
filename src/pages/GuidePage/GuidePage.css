@@ -7,3 +7,7 @@
 input, select, form > button {
     width: 40%;
 }
+
+#image {
+    width: 60%;
+}

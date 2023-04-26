@@ -22,7 +22,7 @@ export default function ClassCard({user, specificClass, setCart}) {
           bg='light'
           key='Light' 
           style={{ width: '18rem', margin:'10px'}}>
-          <Card.Img variant="top" src="holder.js/100px180" />
+          <Card.Img variant="top" src={specificClass.images[0]} />
           <Card.Body>
             <Card.Title className='name'><h3>{specificClass.name}</h3></Card.Title>
             <Card.Text className='sellername'><h6>{specificClass.username}</h6></Card.Text>

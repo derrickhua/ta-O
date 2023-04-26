@@ -1,6 +1,8 @@
 // API modules are where the code lives to communicate
 // with the server via AJAX
 import sendRequest from './sendRequest';
+import axios from 'axios'
+import { getToken } from './usersService'
 const BASE_URL = '/api/classes';
 
 export function getAll() {
@@ -30,6 +32,18 @@ export function deleteClass(id) {
 
 export function getBoughtByUser() {
   return sendRequest(`${BASE_URL}/userBought`);
+}
+
+export function uploadImage(data) {
+  
+  const token = getToken()
+  return axios.put(BASE_URL+'/uploadPhoto', data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      "Authorization": `Bearer ${token}`
+    }
+  })
+
 }
 
 
