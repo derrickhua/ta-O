@@ -23,13 +23,20 @@ import SignUpModal from "../SignUpForm/SignUpModal"
 import BCModal from "../BookedClassModal/BCModal"
 
 
-export default function NavBar({ user, setUser }) {
+export default function NavBar({ user, setUser, searchClasses }) {
     const [showModal, setShowModal] = useState({
         login: false,
         signUp: false,
         bookedClasses: false
     });
+
+    const [searchInput, setSearchInput] = useState('');
+    const [bookedClasses, setBClasses] = useState([])
+    const [classList, setClassList] = useState(null)    
+
     const navigate = useNavigate();
+
+
     function handleLogClose() {
         setShowModal({
             login:false, signUp: false
@@ -61,6 +68,8 @@ export default function NavBar({ user, setUser }) {
             login:false, signUp: false, bookedClasses: false
         });
     }  
+
+    // Navigating everywhere
     function redirectHomePage(){
         navigate(`/`)
     }
@@ -73,6 +82,7 @@ export default function NavBar({ user, setUser }) {
     function redirectShoppingCart(){
         navigate(`/shoppingCart`)
     }
+
     function handleLogOut() {
         userService.logOut();
         navigate(`/`)
@@ -83,22 +93,29 @@ export default function NavBar({ user, setUser }) {
         console.log(user)
     }
 
-    const [bookedClasses, setBClasses] = useState([])
-    const [classList, setClassList] = useState(null)
-  
     async function getMyClasses() {
         const classes = await classAPI.getBoughtByUser();
         setBClasses(classes)
         let classList = bookedClasses.map((klass) => <li>{klass.name} by {klass.username}</li>)
         setClassList(classList)  
     }
+
     useEffect(function() {
         if (user) {
             getMyClasses()           
         }
       }, []);
 
-    return (
+    function handleSearch(evt) {
+        setSearchInput(evt.target.value)
+    }
+
+    function search() {
+        searchClasses(searchInput)
+    }
+
+
+      return (
         <>
             <Navbar bg="light" expand="lg">
             <Container>
@@ -108,12 +125,14 @@ export default function NavBar({ user, setUser }) {
                 <Nav className="me-auto">
                     <Form className="d-flex">
                         <Form.Control
+                            name='searchBar' 
                             type="search"
                             placeholder="..."
                             className="me-2 search"
                             aria-label="Search"
+                            onChange={handleSearch}
                             />
-                            <Button variant="outline-secondary" className='search'>Search</Button>
+                            <Button variant="outline-secondary" className='search' onClick={search}>Search</Button>
                     </Form>
                     {user && <NavLink to="/guiding" className='realNavLink'>Become a Guide</NavLink>} 
                     <NavDropdown title="Profile" id="basic-nav-dropdown" className='dropDon'>

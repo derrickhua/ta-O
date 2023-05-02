@@ -1,20 +1,14 @@
 import { useState, useEffect } from 'react';
 import * as classAPI from '../../utilities/classesApi'
-
 import './HomePage.css'
 import ClassCardBox from '../../components/ClassCardBox/ClassCardBox';
 import CatBar from '../../components/CategoryBar/CategoryBar';
-export default function HomePage({user, categories}) {
-    const [classes, setClasses] = useState([])
+export default function HomePage({user, categories, getAllClasses, classes, setClasses}) {
     const [cart, setCart] = useState(null);
     
-    async function getAllClasses() {
-      const classes = await classAPI.getAll();
-      setClasses(classes);
-    }
 
     useEffect(function() {
-        getAllClasses()
+        getAllClasses()          
       }, [user]);
 
     async function switchClassesByCat(cat) {

@@ -12,6 +12,7 @@ module.exports = {
   index,
   indexUser,
   indexBought,
+  indexSearch,
   show,
   create,
   update,
@@ -29,6 +30,27 @@ async function index(req, res) {
     classes = await Classes.find({isPaid: { $ne: true  }}).sort('name').exec(); 
   }
   res.json(classes);
+}
+
+async function indexSearch(req, res) {
+  console.log(req.query)
+  console.log(req.body)
+  let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
+  // Default to sorting by name
+  let sortKey = req.query.sort || 'name';
+  Student.find(modelQuery)
+  .sort(sortKey).exec(function(err, students) {
+    if (err) return next(err);
+    // Passing search values, name & sortKey, for use in the EJS
+    res.render('students/index', {
+      students,
+      user: req.user,
+      name: req.query.name,
+      sortKey
+    });
+  });
+  
+
 }
 
 async function indexUser(req, res) {

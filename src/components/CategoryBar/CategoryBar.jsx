@@ -1,16 +1,13 @@
-import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
-import * as userService from '../../utilities/usersService'
 import Button from 'react-bootstrap/Button';
 import './CategoryBar.css'
+
 export default function CatBar({categories, switchClassesByCat, getAllClasses}) {
-    let categoryList = categories.map(category => (
-        <>
+    let categoryList = categories.map((category, idx) => (
             <Button variant="outline-secondary" 
-            onClick={()=>switchClassesByCat(category)}>
+            onClick={()=>switchClassesByCat(category)} key={idx}>
+                
                 {category} 
             </Button>
-        </>
     )
         
         )

@@ -28,7 +28,7 @@ export default function ClassCard({user, specificClass, setCart}) {
           <Card.Body>
             <Card.Title className='name' onClick={goToDetails}><h3>{specificClass.name}</h3> <h6>${specificClass.price.toFixed(2)}</h6></Card.Title>
             <Card.Text className='sellername'>
-              <span><h6>by {specificClass.username}</h6> </span> 
+              <span>by {specificClass.username}</span> 
               {(user && user._id !== specificClass.seller) && <Button variant="dark" onClick={()=>handleAddToOrder(specificClass)}>+</Button>}
             </Card.Text>
             <Card.Text className='description'>

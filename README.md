@@ -35,4 +35,7 @@ The service primarily being sold in this market are classes provided by the guid
 * Add in HTML Duration Picker
 * Add  multiple image upload for each service
 * Pages to work on: Account/Help/ 
+* Components to work on: Footer
+* Work on read me
+* reviews on classes, booking through inquiries
 * Overall work on better CSS / Design layout more symbols, logos

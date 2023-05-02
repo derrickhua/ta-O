@@ -49,6 +49,7 @@ export default function GuidePage({ categories, user, setUser }) {
       // Prevent form from being submitted to the server
       evt.preventDefault();
       try {
+        // need to remove 2 parts due to making my own duration picker
         const theClass = await classAPI.makeClass(newClass);
         console.log(theClass)
       } catch {
@@ -101,7 +102,7 @@ export default function GuidePage({ categories, user, setUser }) {
             <input type="number" name="price" value={newClass.price} onChange={handleChange} required />
             {/* in the future import html duration picker */}
             <label>Duration</label>
-            <input type="text" name="duration" value={newClass.duration} onChange={handleChange} required />
+            <input type="text" className='html-duration-picker' name="duration" value={newClass.duration} onChange={handleChange} required/>
             <label>Category</label>
             {selectForm }
             <Button variant="outline-secondary" type="submit" onClick={getClasses}>Make New Class</Button>
