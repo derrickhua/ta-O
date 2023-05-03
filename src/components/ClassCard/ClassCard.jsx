@@ -24,7 +24,7 @@ export default function ClassCard({user, specificClass, setCart}) {
           key='Light' 
           style={{ width: '15rem', margin:'10px'}}
           >
-          <Card.Img variant="top" src={specificClass.images} />
+          <Card.Img variant="top" src={specificClass.images[0]} />
           <Card.Body>
             <Card.Title className='name' onClick={goToDetails}><h3>{specificClass.name}</h3> <h6>${specificClass.price.toFixed(2)}</h6></Card.Title>
             <Card.Text className='sellername'>

@@ -110,7 +110,8 @@ export default function NavBar({ user, setUser, searchClasses }) {
         setSearchInput(evt.target.value)
     }
 
-    function search() {
+    async function search() {
+        redirectHomePage()
         searchClasses(searchInput)
     }
 

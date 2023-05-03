@@ -58,7 +58,7 @@
     width: 60%;
 }
 
-.classMakeForm > input {
+.classMakeForm > input, #duration {
     border-radius: 8px;
     border-color: #c2c7cc;
 }
@@ -79,3 +79,13 @@
     align-items: center;
 }
 
+#duration {
+    width: 15%;
+    margin: 0px 20px;
+    text-align:center;
+}
+
+.durationPicker {
+    display: flex;
+    justify-content: center;
+}

@@ -10,10 +10,9 @@ export default function GuidePage({ categories, user, setUser }) {
     name: '',
     description: '',
     city: '',
-    duration: '',
     category: 'Sports',
     price: 0,
-    images: '',
+    images: [],
     });
     const [classes, setClasses] = useState([]);
     const [soldClasses, setSoldClasses] = useState([]);
@@ -48,6 +47,10 @@ export default function GuidePage({ categories, user, setUser }) {
     async function handleSubmit(evt) {
       // Prevent form from being submitted to the server
       evt.preventDefault();
+      let duration = `${newClass.hours} hours ${newClass.minutes} minutes`
+      delete newClass.hours
+      delete newClass.minutes
+      newClass.duration = duration
       try {
         // need to remove 2 parts due to making my own duration picker
         const theClass = await classAPI.makeClass(newClass);
@@ -70,7 +73,9 @@ export default function GuidePage({ categories, user, setUser }) {
         const data = new FormData()
         data.append('file', photo)
         classAPI.uploadImage(data).then(res => {
-          setNewClass({ ...newClass, images: res.data });
+          let klass = newClass
+          klass.images.push(res.data)
+          setNewClass(klass);
           setPhotoPrev(res.data)
           setError('');
         })
@@ -83,7 +88,7 @@ export default function GuidePage({ categories, user, setUser }) {
         <div className="form-container">
           <div className='imgUpload'>
             <div className='previewImg'>
-                <img src={photoPrev}></img>
+                <img src={photoPrev} alt='Preview'></img>
             </div>
             <form onSubmit={handleImageUpload} className='imgUploadForm'>
                     <input type="file" name="image" id="image" accept="image/*" onChange={handleImgChange} />
@@ -102,7 +107,10 @@ export default function GuidePage({ categories, user, setUser }) {
             <input type="number" name="price" value={newClass.price} onChange={handleChange} required />
             {/* in the future import html duration picker */}
             <label>Duration</label>
-            <input type="text" className='html-duration-picker' name="duration" value={newClass.duration} onChange={handleChange} required/>
+            <span className='durationPicker'>
+            <input type="number" name="hours" id='duration' defaultValue={0} onChange={handleChange} min={0} max={12} required/> hrs
+            <input type="number" name="minutes" id='duration' defaultValue={0} onChange={handleChange} min={0} max={59} required/> mins
+            </span>
             <label>Category</label>
             {selectForm }
             <Button variant="outline-secondary" type="submit" onClick={getClasses}>Make New Class</Button>

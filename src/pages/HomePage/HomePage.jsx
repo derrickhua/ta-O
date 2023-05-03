@@ -3,13 +3,14 @@ import * as classAPI from '../../utilities/classesApi'
 import './HomePage.css'
 import ClassCardBox from '../../components/ClassCardBox/ClassCardBox';
 import CatBar from '../../components/CategoryBar/CategoryBar';
-export default function HomePage({user, categories, getAllClasses, classes, setClasses}) {
+export default function HomePage({user, categories, getAllClasses, classes, setClasses, searched}) {
     const [cart, setCart] = useState(null);
     
-
     useEffect(function() {
-        getAllClasses()          
-      }, [user]);
+      if (searched.length === 0){
+       getAllClasses()  
+      }
+    }, [user]);
 
     async function switchClassesByCat(cat) {
       const klasses = await classAPI.getAll();
