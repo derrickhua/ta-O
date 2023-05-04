@@ -22,9 +22,11 @@ const userSchema = new Schema({
     description: {
       type: String
     },
+    phoneNumber: {
+      type: Number
+    },
     profileImg: {
-      type: [String],
-      // Default: set an array with an img linked to default
+      type: String,
     },
 }, 
 {

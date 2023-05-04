@@ -42,3 +42,10 @@ export async function checkToken() {
     return usersAPI.checkToken().then(dateStr => new Date(dateStr));
 }
 
+export async function updateUser(userUpdate) {
+    const token = await usersAPI.updateUser(userUpdate)
+    localStorage.setItem('token', token)
+    return getUser()
+}
+
+

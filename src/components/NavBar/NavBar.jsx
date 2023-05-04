@@ -82,6 +82,9 @@ export default function NavBar({ user, setUser, searchClasses }) {
     function redirectShoppingCart(){
         navigate(`/shoppingCart`)
     }
+    function redirectAccountDetails(){
+        navigate(`/account`)
+    }
 
     function handleLogOut() {
         userService.logOut();
@@ -139,7 +142,7 @@ export default function NavBar({ user, setUser, searchClasses }) {
                     <NavDropdown title="Profile" id="basic-nav-dropdown" className='dropDon'>
                         {!user && <NavDropdown.Item onClick={handleLogShow}>Log In</NavDropdown.Item>}
                         {!user && <NavDropdown.Item onClick={handleSUShow}>Sign Up</NavDropdown.Item>}
-                        {user && <NavDropdown.Item>Account</NavDropdown.Item>}
+                        {user && <NavDropdown.Item onClick={redirectAccountDetails}>Account</NavDropdown.Item>}
                         {user && <NavDropdown.Item onClick={() => {
                             handleBookShow() 
                             getMyClasses()}}>Booked Classes</NavDropdown.Item>}

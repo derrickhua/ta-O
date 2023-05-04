@@ -14,3 +14,11 @@ export function checkToken() {
   return sendRequest(`${BASE_URL}/check-token`);
 }
 
+export function updateUser(userUpdate) {
+  return sendRequest(`${BASE_URL}/update`, 'POST', userUpdate)
+}
+
+export function deleteUser() {
+  return sendRequest(`${BASE_URL}/delete`, 'DELETE')
+}
+

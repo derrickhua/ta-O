@@ -10,6 +10,7 @@ import GuidePage from '../GuidePage/GuidePage'
 import ClassDetails from '../ClassDetailsPage/ClassDetails'
 import ShoppingCartPage from '../ShoppingCartPage/ShoppingCartPage'
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import AccountDetailsPage from '../AccountDetailsPage/AccountDetails';
 
 //Components
 import NavBar from '../../components/NavBar/NavBar';
@@ -21,11 +22,15 @@ export default function App() {
   const [searched, setSearched] = useState([])
   let categories = ['Sports','Music','Painting','Ceramics','Dance','Professional']
 
+
   async function getAllClasses() {
     const classes = await classAPI.getAll();
     setClasses(classes);
   }
 
+  async function setUpdateUser() {
+    setUser(getUser())
+  }
 
   async function searchClasses(searchInput) {
 
@@ -36,7 +41,6 @@ export default function App() {
     } else {
       searchedClasses = await classes.filter(klass => klass.name.toLowerCase().includes(searchInput.toLowerCase()))
       await setClasses(searchedClasses)
-      console.log(classes)
     }
 
   }
@@ -51,6 +55,7 @@ export default function App() {
         <Route path="/guiding" element={<GuidePage categories={categories} user={user} setUser={setUser}/>} /> 
         <Route path="/class/:id" element={<ClassDetails user={ user } categories={categories}/>} /> 
         <Route path="/history" element={<OrderHistoryPage user={ user } categories={categories}/>} /> 
+        <Route path="/account" element={<AccountDetailsPage user={ user } setUser={setUser}/>} /> 
         <Route path="/shoppingCart" element={<ShoppingCartPage user={ user } categories={categories}/>} /> 
         {/* <Route path="/history" element={<HistoryPage />} />
         <Route path="/account" element={<AccountSettingsPage />} /> 

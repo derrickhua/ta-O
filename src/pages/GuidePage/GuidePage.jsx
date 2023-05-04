@@ -64,6 +64,7 @@ export default function GuidePage({ categories, user, setUser }) {
     // const [status, setStatus] = useState(null)
     const [photo, setPhoto] = useState(null)
     const [photoPrev, setPhotoPrev] = useState(null)
+    
     async function handleImgChange(evt){
         setPhoto(evt.target.files[0])
     }

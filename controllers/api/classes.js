@@ -33,8 +33,7 @@ async function index(req, res) {
 }
 
 async function indexSearch(req, res) {
-  console.log(req.query)
-  console.log(req.body)
+
   let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
   // Default to sorting by name
   let sortKey = req.query.sort || 'name';

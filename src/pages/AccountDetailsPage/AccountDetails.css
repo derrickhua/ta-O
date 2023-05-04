@@ -1,0 +1,50 @@
+.accountPage {
+    margin: 50px 70px;
+}
+
+.pageTitle {
+    margin-bottom: 50px;
+}
+
+.accountInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.accountDetails{
+    width: 60%;
+}
+
+.imageHolder {
+    width: 200px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    margin-right: 40px;
+    margin-top: 40px;
+}
+
+.userInfo {
+    color: gray;
+}
+
+.editSeparate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+
+
+.edit {
+    width: 100px;
+    text-decoration: underline;
+    border: 0px;
+    background: rgba(255, 255, 255, 0);
+}
+
+.edit:hover, .editSeparate:hover {
+    color: #A8C990;
+}

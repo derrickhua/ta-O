@@ -85,7 +85,7 @@ export default function ClassDetails({user, categories}) {
 
         { (user !== null && user._id === specificClass.seller) &&
             <>
-           <div className='hiddenForm'>
+        <div className='hiddenForm'>
 
             {showEdit && 
                 <div className="formContainer" >
