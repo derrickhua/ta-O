@@ -8,4 +8,10 @@ router.post('/login', usersCtrl.login)
 router.post('/update', ensureLoggedIn, usersCtrl.update)
 router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
 router.delete('/delete', usersCtrl.deleteUser)
+
+router.post('/makeConnection', usersCtrl.makeConnection)
+router.get('/getConnections', usersCtrl.getConnections)
+router.get('/getMessages/:conversationId', usersCtrl.getMessages)
+router.post('/newMessage', usersCtrl.newMessage)
+
 module.exports = router;

@@ -22,3 +22,18 @@ export function deleteUser() {
   return sendRequest(`${BASE_URL}/delete`, 'DELETE')
 }
 
+export function makeConnection(data) {
+  return sendRequest(BASE_URL+"/makeConnection", 'POST', data)
+}
+
+export function getConnections() {
+  return sendRequest(BASE_URL+"/getConnections")
+}
+
+export function getMessages(body) {
+  return sendRequest(BASE_URL+`/getMessages/${body.conversationId}`)
+}
+
+export function sendMessage(data) {
+  return sendRequest(BASE_URL+`/newMessage`, 'POST', data)
+}

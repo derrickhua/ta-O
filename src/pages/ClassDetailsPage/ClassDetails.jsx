@@ -1,15 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import * as classAPI from '../../utilities/classesApi'
-
+import {makeConnection} from '../../utilities/usersApi'
 import './ClassDetails.css'
 import Button from 'react-bootstrap/Button';
 
 export default function ClassDetails({user, categories}) {
     const [specificClass, setsSpecificClass] = useState([])
     const [changeClass, setChangeClass] = useState({});
+    const [showEdit, setShowEdit] = useState(false)
+    const [error, setError] = useState('');
+    const navigate = useNavigate();    
+    const goToUserClasses = () => navigate(`/guiding`);
+    const goToMessages = () => navigate(`/messages`);    
 
     let {id} = useParams();
+    let selectForm = makeSelect(categories)
 
     async function getClass(id) {
       const theClass = await classAPI.getById(id);
@@ -21,15 +27,11 @@ export default function ClassDetails({user, categories}) {
       }, [id]);    
     
     
-    const [error, setError] = useState('');
-
     function makeSelect(categoryArray){
         return <select name='category' onChange={handleChange}>
           {categoryArray.map((category) => <option key={category} value={category}>{category}</option>)}
         </select>
     }
-
-    let selectForm = makeSelect(categories)
 
     function handleChange(evt) {
         setChangeClass({ ...changeClass, [evt.target.name]: evt.target.value });
@@ -45,8 +47,6 @@ export default function ClassDetails({user, categories}) {
         }
     }
 
-    const navigate = useNavigate();
-    const goToUserClasses = () => navigate(`/guiding`);
     async function deleteClass(id){
         try {
             await classAPI.deleteClass(id);
@@ -56,8 +56,6 @@ export default function ClassDetails({user, categories}) {
         }
     }
     
-    const [showEdit, setShowEdit] = useState(false)
-
     function changeShow() {
         if (showEdit) {
             setShowEdit(false)
@@ -65,6 +63,15 @@ export default function ClassDetails({user, categories}) {
             setShowEdit(true)
         }
     }
+
+    function makeAConnection() {
+        makeConnection({ firstUser: user._id, secondUser: specificClass.seller }).then(res => {
+            console.log(res)
+            goToMessages();
+        })
+    }    
+
+
   
     return (
     <>
@@ -82,7 +89,14 @@ export default function ClassDetails({user, categories}) {
             </div>
 
         </div>
-
+    {/* 
+        this section will be dedicated to making contact with the seller/guide
+        the inquiry button should then send this person to the messenger page and open a tab where
+        user and this person share a chat
+    */}
+    <div className="inquiry">
+        <Button onClick={makeAConnection}>Contact Seller</Button>
+    </div>
         { (user !== null && user._id === specificClass.seller) &&
             <>
         <div className='hiddenForm'>
@@ -113,10 +127,6 @@ export default function ClassDetails({user, categories}) {
         <Button variant='outline-secondary' onClick={changeShow}>Edit</Button>
         <Button variant='outline-secondary' onClick={()=>deleteClass(id)}>DELETE</Button>            
         </>
- 
-
-
-             
         }   
     </div>
 

@@ -11,7 +11,7 @@ import ClassDetails from '../ClassDetailsPage/ClassDetails'
 import ShoppingCartPage from '../ShoppingCartPage/ShoppingCartPage'
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import AccountDetailsPage from '../AccountDetailsPage/AccountDetails';
-
+import MessengerPage from '../MessengerPage/MessengerPage';
 //Components
 import NavBar from '../../components/NavBar/NavBar';
 import './App.css';
@@ -57,6 +57,7 @@ export default function App() {
         <Route path="/history" element={<OrderHistoryPage user={ user } categories={categories}/>} /> 
         <Route path="/account" element={<AccountDetailsPage user={ user } setUser={setUser}/>} /> 
         <Route path="/shoppingCart" element={<ShoppingCartPage user={ user } categories={categories}/>} /> 
+        <Route path="/messages" element={<MessengerPage user={ user } />} /> 
         {/* <Route path="/history" element={<HistoryPage />} />
         <Route path="/account" element={<AccountSettingsPage />} /> 
         <Route path="/wishlist" element={<WishListPage />} /> 

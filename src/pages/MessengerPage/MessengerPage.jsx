@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { getConnections, getMessages } from '../../utilities/usersApi'
+import ChatBox from '../../components/ChatBox/ChatBox'
+import ConvoContainer from '../../components/ConvoContainer/ConvoContainer'
 import './MessengerPage.css'
 
 export default function MessengerPage({user}) {
@@ -7,13 +10,13 @@ export default function MessengerPage({user}) {
     const [chat, setChat] = useState(null)
 
     useEffect(() => {
-        getFriendships().then(res => {
+        getConnections().then(res => {
             setConversations(res)
         })
     }, [messages[messages.length-1]?.body])
 
     useEffect(() => {
-        getFriendships().then(res => {
+        getConnections().then(res => {
             setChat(res[0]._id)
         })
     }, [])
@@ -29,12 +32,13 @@ export default function MessengerPage({user}) {
         <div>
             <div className="row">
                 { chat && conversations && 
-                <>
-                    <ConvoContainer user={user} chat={chat} setChat={setChat} conversations={conversations} />
-                    <Chatbox messages={messages} setMessages={setMessages} chat={chat} user={user} conversations={conversations} setConversations={setConversations} />
-                </>
-                
+                    <>
+                        <ConvoContainer user={user} chat={chat} setChat={setChat} conversations={conversations} />
+                        <ChatBox messages={messages} setMessages={setMessages} chat={chat} user={user} conversations={conversations} setConversations={setConversations} />
+                    </>
                 }
+
+                <p>Nothing yet</p>
             </div>
         </div>
     </section>

@@ -85,6 +85,9 @@ export default function NavBar({ user, setUser, searchClasses }) {
     function redirectAccountDetails(){
         navigate(`/account`)
     }
+    function redirectMessages(){
+        navigate(`/messages`)
+    }
 
     function handleLogOut() {
         userService.logOut();
@@ -143,6 +146,7 @@ export default function NavBar({ user, setUser, searchClasses }) {
                         {!user && <NavDropdown.Item onClick={handleLogShow}>Log In</NavDropdown.Item>}
                         {!user && <NavDropdown.Item onClick={handleSUShow}>Sign Up</NavDropdown.Item>}
                         {user && <NavDropdown.Item onClick={redirectAccountDetails}>Account</NavDropdown.Item>}
+                        {user && <NavDropdown.Item onClick={redirectMessages}>Messages</NavDropdown.Item>}
                         {user && <NavDropdown.Item onClick={() => {
                             handleBookShow() 
                             getMyClasses()}}>Booked Classes</NavDropdown.Item>}
