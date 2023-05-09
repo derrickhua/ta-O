@@ -8,8 +8,8 @@ export function getCart() {
 }
 
 
-export function addItemToCart(specClass) {
-  return sendRequest(`${BASE_URL}/cart/classes/`,'POST', specClass);
+export function addItemToCart(classData) {
+  return sendRequest(`${BASE_URL}/cart/classes/`,'POST', classData);
 }
 
 // Updates the order's (cart's) isPaid property to true

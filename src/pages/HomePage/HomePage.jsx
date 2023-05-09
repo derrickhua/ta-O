@@ -3,8 +3,8 @@ import * as classAPI from '../../utilities/classesApi'
 import './HomePage.css'
 import ClassCardBox from '../../components/ClassCardBox/ClassCardBox';
 import CatBar from '../../components/CategoryBar/CategoryBar';
-export default function HomePage({user, categories, getAllClasses, classes, setClasses, searched}) {
-    const [cart, setCart] = useState(null);
+export default function HomePage({user, categories, getAllClasses, classes, setClasses, searched, cart, setCart}) {
+
     
     useEffect(function() {
       if (searched.length === 0){

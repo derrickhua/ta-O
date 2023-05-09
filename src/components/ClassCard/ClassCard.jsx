@@ -8,15 +8,6 @@ export default function ClassCard({user, specificClass, setCart}) {
     const navigate = useNavigate();
     const goToDetails = () => navigate(`/class/${specificClass._id}`)
 
-    async function handleAddToOrder(specClass) {
-      try {
-        const cart = await ordersAPI.addItemToCart(specClass);
-        setCart(cart);        
-      } catch(err) {
-        console.log(err)
-      }
-
-    }
 
     return (
           <Card
@@ -29,7 +20,6 @@ export default function ClassCard({user, specificClass, setCart}) {
             <Card.Title className='name' onClick={goToDetails}><h3>{specificClass.name}</h3> <h6>${specificClass.price.toFixed(2)}</h6></Card.Title>
             <Card.Text className='sellername'>
               <span>by {specificClass.username}</span> 
-              {(user && user._id !== specificClass.seller) && <Button variant="dark" onClick={()=>handleAddToOrder(specificClass)}>+</Button>}
             </Card.Text>
             <Card.Text className='description'>
             </Card.Text>

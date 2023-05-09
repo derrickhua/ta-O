@@ -8,7 +8,7 @@ export default function OrderDetail({ order, handleCheckout }) {
   console.log(order)
   const lineClasses = order.classes.map(specificClass =>
     <LineItem
-      specificClass={specificClass}
+      specificClass={specificClass.item}
       isPaid={order.isPaid}
       key={specificClass._id}
     />

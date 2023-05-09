@@ -1,14 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import * as classAPI from '../../utilities/classesApi'
+import * as ordersAPI from '../../utilities/ordersApi'
+import DateTimePicker from 'react-datetime-picker'
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
 import {makeConnection} from '../../utilities/usersApi'
 import './ClassDetails.css'
 import Button from 'react-bootstrap/Button';
 
-export default function ClassDetails({user, categories}) {
+export default function ClassDetails({user, categories, setCart}) {
     const [specificClass, setsSpecificClass] = useState([])
     const [changeClass, setChangeClass] = useState({});
     const [showEdit, setShowEdit] = useState(false)
+    const [bookingDate, setBookingDate] = useState(new Date())
     const [error, setError] = useState('');
     const navigate = useNavigate();    
     const goToUserClasses = () => navigate(`/guiding`);
@@ -71,6 +77,17 @@ export default function ClassDetails({user, categories}) {
         })
     }    
 
+    async function handleAddToOrder() {
+        let classData = {}
+        classData.date = bookingDate
+        classData.klass = specificClass
+        try {  
+        const cart = await ordersAPI.addItemToCart(classData);
+        setCart(cart);        
+        } catch(err) {
+            console.log(err)
+        }
+    }
 
   
     return (
@@ -94,9 +111,15 @@ export default function ClassDetails({user, categories}) {
         the inquiry button should then send this person to the messenger page and open a tab where
         user and this person share a chat
     */}
+    {user && 
     <div className="inquiry">
+        <br />
         <Button onClick={makeAConnection}>Contact Seller</Button>
-    </div>
+        <br />
+        <br />
+    </div>    
+    }
+
         { (user !== null && user._id === specificClass.seller) &&
             <>
         <div className='hiddenForm'>
@@ -123,11 +146,20 @@ export default function ClassDetails({user, categories}) {
                 </div>        
 
             }
+            
         </div>             
         <Button variant='outline-secondary' onClick={changeShow}>Edit</Button>
         <Button variant='outline-secondary' onClick={()=>deleteClass(id)}>DELETE</Button>            
         </>
         }   
+
+        {/* there should be a section for booking and for adding to cart */}
+        {   (user !== null && user._id !== specificClass.seller) && 
+        <>
+            <DateTimePicker onChange={setBookingDate} value={bookingDate} />
+            <button onClick={()=>handleAddToOrder()}>Book a Class</button>
+        </>
+        }
     </div>
 
     </>

@@ -19,6 +19,7 @@ import './App.css';
 export default function App() {
   const [user, setUser] = useState(getUser());
   const [classes, setClasses] = useState([]);
+  const [cart, setCart] = useState(null);
   const [searched, setSearched] = useState([])
   let categories = ['Sports','Music','Painting','Ceramics','Dance','Professional']
 
@@ -50,10 +51,10 @@ export default function App() {
     <NavBar user={ user } setUser={setUser} searchClasses={searchClasses}/>
     <>
       <Routes>
-        <Route path="/" element={<HomePage searched={searched} getAllClasses={getAllClasses} classes={classes} 
+        <Route path="/" element={<HomePage searched={searched} cart={cart} setCart={setCart} getAllClasses={getAllClasses} classes={classes} 
         user={ user } categories={categories} setClasses={setClasses}/>} /> 
         <Route path="/guiding" element={<GuidePage categories={categories} user={user} setUser={setUser}/>} /> 
-        <Route path="/class/:id" element={<ClassDetails user={ user } categories={categories}/>} /> 
+        <Route path="/class/:id" element={<ClassDetails setCart={setCart} user={ user } categories={categories}/>} /> 
         <Route path="/history" element={<OrderHistoryPage user={ user } categories={categories}/>} /> 
         <Route path="/account" element={<AccountDetailsPage user={ user } setUser={setUser}/>} /> 
         <Route path="/shoppingCart" element={<ShoppingCartPage user={ user } categories={categories}/>} /> 
