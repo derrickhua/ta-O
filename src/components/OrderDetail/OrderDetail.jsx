@@ -13,6 +13,7 @@ export default function OrderDetail({ order, handleCheckout }) {
   const lineClasses = order.classes.map(specificClass =>
     <LineItem
       goToDetails={()=> navigate(`/class/${specificClass.item._id}`)}
+      specificDate={specificClass.date}
       specificClass={specificClass.item}
       isPaid={order.isPaid}
       key={specificClass._id}
@@ -32,13 +33,19 @@ export default function OrderDetail({ order, handleCheckout }) {
       <div className='lineClassDiv'>
         {lineClasses.length ?
           <div className='lineClassHistory'>
-            {lineClasses}
+            <div>
+              {lineClasses}
+            </div>
+            
             <section className="total">
               {order.isPaid ?
-                <span className="right">TOTAL&nbsp;&nbsp;</span>
+                <div className='orderTotal'>
+                  <span className="right">TOTAL</span><span>${order.orderTotal}</span>
+                </div>
+                
                 :
                 <>
-                <span className="right">TOTAL: ${order.orderTotal.toFixed(2)}</span>
+                <span className="right">TOTAL: ${order.orderTotal}</span>
                 <Button
                   className="btn-sm"
                   variant='outline-secondary'
