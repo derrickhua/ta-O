@@ -139,7 +139,7 @@ export default function NavBar({ user, setUser, searchClasses }) {
                             aria-label="Search"
                             onChange={handleSearch}
                             />
-                            <Button variant="outline-secondary" className='search' onClick={search}>Search</Button>
+                            <button className='search searchBtn' onClick={search}>Search</button>
                     </Form>
                     {user && <NavLink to="/guiding" className='realNavLink'>Become a Guide</NavLink>} 
                     <NavDropdown title="Profile" id="basic-nav-dropdown" className='dropDon'>

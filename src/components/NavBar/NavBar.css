@@ -7,17 +7,22 @@ nav > span {
 }
 
 .brandLogo {
-    color: black;
+    color: #A8C990;
     text-decoration: none;
     font-size: 1.25em;
 }
 
 .brandLogo:hover {
+    color: lightgray;
+}
+
+
+#basic-nav-dropdown {
     color: #A8C990;
 }
 
-.dropDon.nav-item.dropdown:hover {
-    --bs-nav-link-hover-color: #A8C990;
+#basic-nav-dropdown:hover {
+    color: rgb(211, 211, 211);
 }
 
 .me-auto {
@@ -36,8 +41,20 @@ nav > span {
     --bs-btn-font-size: 0.9rem;
 }
 
-.btn-outline-secondary:hover{
-    --bs-btn-hover-color: #A8C990;
+.searchBtn {
+    background-color: #A8C990;
+    color:#fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.75em;
+}
+
+.searchBtn:hover {
+    background-color: #fff;
+    color:#A8C990;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.75em;
 }
 
 
@@ -64,10 +81,11 @@ nav > span {
     transition: color .15s ease-in-out,
     background-color .15s ease-in-out,
     border-color .15s ease-in-out;
+    color: #A8C990;
 }
 
 .realNavLink:hover {
-    color: #A8C990;
+    color: lightgray;
 } 
 
 

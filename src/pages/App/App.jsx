@@ -5,12 +5,12 @@ import { getUser } from '../../utilities/usersService';
 import * as classAPI from '../../utilities/classesApi'
 
 // Pages
-import HomePage from '../HomePage/HomePage'
-import GuidePage from '../GuidePage/GuidePage'
-import ClassDetails from '../ClassDetailsPage/ClassDetails'
-import ShoppingCartPage from '../ShoppingCartPage/ShoppingCartPage'
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
-import AccountDetailsPage from '../AccountDetailsPage/AccountDetails';
+import HomePage from '../HomePage/HomePage.jsx'
+import GuidePage from '../GuidePage/GuidePage.jsx'
+import ClassDetails from '../ClassDetailsPage/ClassDetails.jsx'
+import ShoppingCartPage from '../ShoppingCartPage/ShoppingCartPage.jsx'
+import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage.jsx';
+import AccountDetailsPage from '../AccountDetailsPage/AccountDetails.jsx';
 import MessengerPage from '../MessengerPage/MessengerPage';
 //Components
 import NavBar from '../../components/NavBar/NavBar';

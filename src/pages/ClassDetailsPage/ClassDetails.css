@@ -1,13 +1,83 @@
-.classDetailsPage {
+.titleAndName {
+    width: 30%;
+    max-width: 300px;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    justify-content: space-between;
 }
 
-button, select {
-    width: 189px;
+.titleAndName, .classDesc {
+    color:black;
+}
+
+.classDetailsPage {
+    margin: 50px auto;
+    width: 80%;
+    max-width: 1300px;
+}
+
+.classDetailsSection {
+    display: flex;
+    height: 500px;
+    margin: 30px 0px 30px 0px;
+    justify-content: space-between;
+}
+
+.carousel {
+    width: 70%;
+    border: 5px solid #fff;
+    border-radius: 20px;
+}
+
+.carousel-inner, .carousel-item {
+    height: 100%;
+}
+
+.infoContainer {
+    width: 25%;
+}
+.classInfo {
+    margin-bottom: 40px;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 3px solid gray;
+    border-radius: 10px;
+    padding: 20px;
+    color: black;
+    background-color: #fff;
+}
+
+.contactLink {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    border: 3px solid #A8C990;
+    border-radius: 10px;
+    padding: 0px;
+    background-color: #A8C990;
+}
+
+.contactLink:hover, .contactButton:hover {
+    background-color: #fff;
+}
+
+.contactButton {
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    background: rgba(0,0,0,0.0);
+}
+
+.contactButton:hover {
+    color: #A8C990;
+    cursor: pointer;
 }
 
 .formContainer {
@@ -23,11 +93,38 @@ button, select {
     text-align: center;
 }
 
-.classDetails{
+.react-datetime-picker__clear-button, .react-datetime-picker__calendar-button {
+    width: 30px;
+}
+.react-datetime-picker__inputGroup__amPm {
+    width: 50px;
+}
+
+.bottomSection {
     display: flex;
-    flex-direction: row;
-    border: 3px solid black;
+    height: 200px;
+    justify-content: space-between;
+}
+.bookingSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+    border: 3px solid gray;
     border-radius: 10px;
-    padding: 20px;
+    color:black;
+}
+
+.bookingBtn {
+    background-color: #A8C990;
+    border: 2px solid #A8C990;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.bookingBtn:hover {
+    background-color: #fff;
+    color: #A8C990;
 }
 
