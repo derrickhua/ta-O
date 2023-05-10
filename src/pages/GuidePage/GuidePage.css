@@ -1,22 +1,13 @@
 .topGuidePage {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    margin-top: 50px;
-    width: 1500px;
-    margin-bottom: 20px;
-}
-
-.form-container > form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 50px auto;
+    width: 80%;
+    max-width: 1300px;
 }
 
 .form-container {
-    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    height: 700px;
 }
 
 .imgUpload {
@@ -24,9 +15,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    width: 35%;
-    height: 100%;
-    padding: 20px;
+    padding: 15px;
+    height: 700px;
+    border: 4px solid lightgray;
+    border-radius: 15px;
+}
+
+.resize{
+    width: 60%;
+    height: 700px;
 }
 
 .previewImg{
@@ -40,36 +37,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+
+.duration {
+    display: flex;
     width: 100%;
 }
 
+.fitDuration {
+    width: 50%;
+}
+
+.form-floating>label {
+    color: #A8C990;
+}
+
 .classMakeForm {
-    width: 55%;
-    padding: 20px;
-}
-
-.imgUpload,.classMakeForm {
-    border: 4px solid #A8C990;
-    border-radius: 15px;
-}
-
-
-.classMakeForm > input, .classMakeForm >select,.classMakeForm > button, .imgUploadForm > button {
-    width: 60%;
-}
-
-.classMakeForm > input, #duration {
-    border-radius: 8px;
-    border-color: #c2c7cc;
-}
-
-#image {
-    width: 60%;
-}
-
-.previewImg {
-    height: 250px;
-    width: 238px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .botGuidePage {
@@ -79,13 +66,30 @@
     align-items: center;
 }
 
-#duration {
-    width: 15%;
-    margin: 0px 20px;
-    text-align:center;
+.green {
+    color:#A8C990;
 }
 
-.durationPicker {
-    display: flex;
-    justify-content: center;
+.classMakeBtn {
+    background-color: #A8C990;
+    border: 2px solid #A8C990;
+    border-radius: 10px;
+    color: #fff;
+    margin: 0 auto;
+}
+
+.classMakeBtn:hover {
+    background-color: #fff;
+    color: #A8C990;
+}
+
+#carouselHero, .carousel-item-images {
+    object-fit: cover;
+    object-position: center;
+    height: 50vh;
+    overflow: hidden;
+}
+
+.botGuidePage > .ClassCardBox > .card {
+    width: 50%;
 }

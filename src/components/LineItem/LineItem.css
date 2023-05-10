@@ -1,0 +1,10 @@
+.notBtn {
+    border: none;
+    color: #A8C990;
+    background-color: rgb(0,0,0,0);
+}
+
+.LineItem {
+    border: 2px solid #A8C990;
+    margin: 0 auto;
+}

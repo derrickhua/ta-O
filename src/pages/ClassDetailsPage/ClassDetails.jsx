@@ -31,7 +31,7 @@ export default function ClassDetails({user, categories, setCart}) {
     let carouselImages = theClass.images.map((image, idx) =>
     <Carousel.Item fluid>
     <img
-        className="d-block w-100 h-100 rounded"
+        className="d-block w-100 h-100"
         src={image}
         alt={`Slide # ${idx}`}
     />
@@ -131,10 +131,18 @@ export default function ClassDetails({user, categories, setCart}) {
                         <h7>{specificClass.category}</h7>
                     </div>          
                 </div>
-                <div className='contactLink'>
-                
-                {user &&  <button onClick={makeAConnection} className='contactButton'>Message Guide</button>}
-                </div>
+                {(user && user._id !== specificClass.seller) && 
+                    <div className='contactLink'>
+                        <button onClick={makeAConnection} className='contactButton'>Message Guide</button>
+                    </div>
+                }
+                {(user && user._id === specificClass.seller) && 
+                <>
+                    <Button variant='outline-secondary' onClick={changeShow}>Edit</Button>
+                    <Button variant='outline-secondary' onClick={()=>deleteClass(id)}>DELETE</Button>                                              
+                </>
+                }
+
             </div>
         </div>
         <div className='bottomSection'>
@@ -144,15 +152,16 @@ export default function ClassDetails({user, categories, setCart}) {
                     <p>{specificClass.description}</p>
                 </div>
             </div>
-            <div className='bookingSection'>
-                {(user !== null && user._id !== specificClass.seller) && 
-                <>
-                    <h4>Book a Class</h4>
-                    <DateTimePicker onChange={setBookingDate} value={bookingDate} />
-                    <button className='bookingBtn' onClick={()=>handleAddToOrder()}>Book</button >
-                </>
-                }            
-            </div>        
+            { (user && user._id !== specificClass.seller) &&
+                <div className='bookingSection'>   
+                    <>
+                        <h4>Book a Class</h4>
+                        <DateTimePicker onChange={setBookingDate} value={bookingDate} />
+                        <button className='bookingBtn' onClick={()=>handleAddToOrder()}>Book</button >
+                    </>         
+                </div> 
+            }
+       
                     {/* there should be a section for booking and for adding to cart */}
 
 
@@ -185,9 +194,7 @@ export default function ClassDetails({user, categories, setCart}) {
 
             }
             
-        </div>             
-        <Button variant='outline-secondary' onClick={changeShow}>Edit</Button>
-        <Button variant='outline-secondary' onClick={()=>deleteClass(id)}>DELETE</Button>            
+        </div>                       
         </>
         }   
 

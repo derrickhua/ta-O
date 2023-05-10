@@ -1,12 +1,15 @@
-.OrderDetail {
-    display: flex;
-    justify-content: center;
-}
 
 .OrderHistoryPage {
-    margin-top: 30px;
+    margin: 50px auto;
+    width: 80%;
+    max-width: 1300px;
+}
+
+.orderHistory {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
+}
+
+.orderName {
+    margin-bottom: 20px;
 }

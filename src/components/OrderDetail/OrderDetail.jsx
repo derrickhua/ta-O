@@ -1,13 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import LineItem from '../LineItem/LineItem'
 // Used to display the details of any order, including the cart (unpaid order)
 import './OrderDetail.css'
 import Button from 'react-bootstrap/Button';
 
+
 export default function OrderDetail({ order, handleCheckout }) {
+  const navigate = useNavigate();
+
   if (!order) return null;
   console.log(order)
   const lineClasses = order.classes.map(specificClass =>
     <LineItem
+      goToDetails={()=> navigate(`/class/${specificClass.item._id}`)}
       specificClass={specificClass.item}
       isPaid={order.isPaid}
       key={specificClass._id}
@@ -24,9 +29,9 @@ export default function OrderDetail({ order, handleCheckout }) {
         }
         <span>  {new Date(order.updatedAt).toLocaleDateString()}</span>
       </div>
-      <div>
+      <div className='lineClassDiv'>
         {lineClasses.length ?
-          <>
+          <div className='lineClassHistory'>
             {lineClasses}
             <section className="total">
               {order.isPaid ?
@@ -44,7 +49,7 @@ export default function OrderDetail({ order, handleCheckout }) {
 
               }
             </section>
-          </>
+          </div>
           :
           <div>Get out of your comfort zone!</div>
         }

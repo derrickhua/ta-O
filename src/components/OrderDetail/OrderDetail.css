@@ -1,8 +1,10 @@
-.OrderDetail {
+.orderHistory > .OrderDetail {
+    font-size: 2em;
     display:flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+    width: 55%;
+    border-radius: 20px;
+    padding: 50px;
 }
 
 .right {
@@ -17,5 +19,15 @@
 .LineItem {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
+.lineClassDive {
+    width: 100%;
+}
+.lineClassHistory {
+    padding: 10px;
+    font-size: 0.5em;
+    width: 100%;
+}

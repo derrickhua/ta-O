@@ -23,13 +23,11 @@ export default function OrderHistoryPage({ user, setUser }) {
 
   return (
     <main className="OrderHistoryPage">
-      <h2>Order History</h2>
-      {/* Render an OrderList component (needs to be coded) */}
-      {(prevOrders.length > 0) && <OrderList history={prevOrders} setCart={setCart} order={cart} />}
-      {/* Render the OrderDetail component */}
-      <OrderDetail order={cart}
-      handleChangeQty={null} 
-      handleCheckout={null} />
+      <h2 className='orderName'>Order History</h2>
+      <div className='orderHistory'>
+        <OrderList history={prevOrders} setCart={setCart} order={cart} />
+        <OrderDetail order={cart} handleChangeQty={null} handleCheckout={null} />
+      </div>
     </main>
   );
 }
