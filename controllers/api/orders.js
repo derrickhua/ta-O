@@ -31,9 +31,7 @@ async function checkout(req, res) {
     const cart = await Order.getCart(req.user._id);
     cart.isPaid = true;
     let ids = cart.classes.map((klass) => klass._id.toString())
-    console.log(ids)
     let boughtClasses = await Class.find({_id: {$in: [...ids]}}).exec()
-    console.log(boughtClasses)
     boughtClasses.forEach((klass) => {
         klass.isPaid = true;
         klass.buyer = req.user._id;

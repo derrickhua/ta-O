@@ -9,7 +9,6 @@ export default function OrderDetail({ order, handleCheckout }) {
   const navigate = useNavigate();
 
   if (!order) return null;
-  console.log(order)
   const lineClasses = order.classes.map(specificClass =>
     <LineItem
       goToDetails={()=> navigate(`/class/${specificClass.item._id}`)}

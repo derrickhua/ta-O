@@ -24,3 +24,9 @@
   .display-none {
     display: none;
   }
+
+.signUpArea {
+  width: 466px;
+  display: flex;
+  justify-content: flex-end;
+}

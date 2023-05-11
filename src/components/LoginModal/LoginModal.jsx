@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form';
 import * as usersService from '../../utilities/usersService';
+
+import './LoginModal.css'
 
 export default function LoginModal({show, handleClose, handleShow, setUser, redirectHomePage}) {
   const [credentials, setCredentials] = useState({
@@ -36,22 +39,25 @@ export default function LoginModal({show, handleClose, handleShow, setUser, redi
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>  
-        <div className="form-container">
-          <form autoComplete="off" onSubmit={handleSubmit}>
-            <label>Email</label>
-            <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
-            <label>Password</label>
-            <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-            <button type="submit">LOG IN</button>
-          </form>
+        <div>
+        <Form autoComplete="off" onSubmit={handleSubmit}>
+          <Form.Group className="mb-3">
+            <Form.Label>Email Address</Form.Label>
+            <Form.Control type="email" name='email' onChange={handleChange} required />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" name='password' onChange={handleChange} required/>
+          </Form.Group>
+          <span className='loginBtnArea'>
+            <button className='authBtn' type="submit">
+              Submit
+            </button>
+          </span>
+        </Form>
         </div>
       <p className="error-message">&nbsp;{error}</p>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );

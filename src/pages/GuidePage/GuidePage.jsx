@@ -62,9 +62,7 @@ export default function GuidePage({ categories, user, setUser }) {
       delete newClass.minutes
       newClass.duration = duration
       try {
-        // need to remove 2 parts due to making my own duration picker
         const theClass = await classAPI.makeClass(newClass);
-        console.log(theClass)
       } catch {
         setError('New Class Making Failed - Try Again');
       }

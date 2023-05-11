@@ -10,4 +10,27 @@
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
+    font-size: 1.5em;
+}
+
+.shoppingCart>.OrderDetail > .lineClassDiv > .lineClassHistory {
+    padding: 0px;
+}
+
+.shoppingCart>.OrderDetail{
+    margin-top: 30px;
+    background-color: #f0efee ;
+    border-radius: 20px;
+}
+
+.somePadding {
+    padding:10px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.shoppingCart>.OrderDetail > .lineClassDiv > .lineClassHistory > .total >.right {
+    font-size: 1.75em;
+    margin-bottom: 15px;
 }

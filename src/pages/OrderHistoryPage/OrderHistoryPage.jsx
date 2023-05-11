@@ -14,7 +14,7 @@ export default function OrderHistoryPage({ user, setUser }) {
     async function getOrderHistory() {
       const history = await ordersAPI.getPastOrders();
       setPrevOrders(history)
-      console.log(history)
+
     }
     getOrderHistory()
   }, []);
