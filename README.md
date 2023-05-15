@@ -20,10 +20,8 @@ The service primarily being sold in this market are classes provided by the guid
 * Express
 * React.js
 * Node.js
-* AWS SDK for JavaScript 
 * Bootstrap CSS
-* Axios
-* Bcrypt
+![JSON](https://svgshare.com/s/t9F)
 
 
 ## Link: https://ta-o.herokuapp.com/
