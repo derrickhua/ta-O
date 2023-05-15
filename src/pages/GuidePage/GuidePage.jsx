@@ -3,7 +3,6 @@ import * as classAPI from '../../utilities/classesApi'
 import ClassCardBox from '../../components/ClassCardBox/ClassCardBox';
 // CSS related stuff
 import './GuidePage.css'
-import Button from 'react-bootstrap/Button';
 import Carousel from 'react-bootstrap/Carousel';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
@@ -63,6 +62,17 @@ export default function GuidePage({ categories, user, setUser }) {
       newClass.duration = duration
       try {
         const theClass = await classAPI.makeClass(newClass);
+        setImgCarousel([])
+        setNewClass({
+          name: '',
+          description: '',
+          city: '',
+          category: 'Sports',
+          price: 0,
+          images: [],
+          hours: 0,
+          minutes: 0,
+        })
       } catch {
         setError('New Class Making Failed - Try Again');
       }

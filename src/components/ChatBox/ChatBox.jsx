@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { sendMessage, getMessages, getConnections } from '../../utilities/usersApi'
 import { io } from 'socket.io-client'
 import MessageContainer from '../MessageContainer/MessageContainer'
-
+import './Chatbox.css'
 export default function Chatbox({ messages, setMessages, user, chat, conversations, setConversations }) {
 
   const socket = useRef()
@@ -44,7 +44,7 @@ export default function Chatbox({ messages, setMessages, user, chat, conversatio
   }
 
   return (
-    <div className="col-md-6 col-lg-7 col-xl-8">
+    <div className="col-md-6 col-lg-7 col-xl-8 messagingArea">
   
         <MessageContainer messages={messages} user={user} />
      
@@ -52,7 +52,7 @@ export default function Chatbox({ messages, setMessages, user, chat, conversatio
             <div className="form-outline">
               <textarea name="body" className="form-control" id="textAreaExample2" rows="4" onChange={handleChange} value={newMessage.body} placeholder="Message"></textarea>
             </div>
-            <input type="submit" className="btn btn-info btn-rounded float-end" value="Send" />
+            <input type="submit" className="float-end greenBtn" value="Send" />
         </form>
         
     </div>

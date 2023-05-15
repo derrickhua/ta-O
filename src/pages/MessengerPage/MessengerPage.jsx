@@ -28,17 +28,15 @@ export default function MessengerPage({user}) {
     }, [chat])
 
   return (
-    <section>
+    <section className='messengerPage'>
         <div>
-            <div className="row">
+            <div className="messageArea">
                 { chat && conversations && 
                     <>
                         <ConvoContainer user={user} chat={chat} setChat={setChat} conversations={conversations} />
                         <ChatBox messages={messages} setMessages={setMessages} chat={chat} user={user} conversations={conversations} setConversations={setConversations} />
                     </>
                 }
-
-                <p>Nothing yet</p>
             </div>
         </div>
     </section>

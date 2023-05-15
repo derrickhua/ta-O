@@ -1,0 +1,23 @@
+.messengerPage {
+    margin: 50px auto;
+    width: 80%;
+    max-width: 1300px;
+}
+
+.messageArea {
+    display: flex;
+    flex-direction: row;
+    height: 900px;
+}
+
+.friendContainer {
+    width: 30%;
+}
+
+.messagingArea {
+    width: 70%;
+}
+
+.pt-1 {
+    width: 100%;
+}

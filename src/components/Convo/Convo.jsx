@@ -1,4 +1,5 @@
 import React from 'react'
+import './Convo.css'
 
 export default function Conversation({ user, conversation, chat, setChat }) {
 
@@ -7,7 +8,7 @@ export default function Conversation({ user, conversation, chat, setChat }) {
 
     { conversation.firstUser._id === user._id ? 
     
-      <li className="p-2 border-bottom" onClick={() => { console.log(conversation._id, "conversation id clicking"); setChat(conversation._id); console.log(chat, "clicking") }} style={ chat === conversation._id ? {backgroundColor: "#eee"} : {backgroundColor: 'white'}}>
+      <li className="peopleList beWide" onClick={() => { console.log(conversation._id, "conversation id clicking"); setChat(conversation._id); console.log(chat, "clicking") }} style={ chat === conversation._id ? {backgroundColor: "#eee"} : {backgroundColor: 'white'}}>
           <div className="d-flex justify-content-between">
           <div className="d-flex flex-row">
               {/* <img alt="avatar"
@@ -22,9 +23,9 @@ export default function Conversation({ user, conversation, chat, setChat }) {
 
       :
 
-      <li className="p-2 border-bottom" onClick={() => { console.log(conversation._id, "conversation id clicking"); setChat(conversation._id) ; console.log(chat, "clicking") } } style={ chat === conversation._id ? {backgroundColor: "#eee"} : {backgroundColor: 'white'}}>
+      <li className="peopleList beWide" onClick={() => { console.log(conversation._id, "conversation id clicking"); setChat(conversation._id) ; console.log(chat, "clicking") } } style={ chat === conversation._id ? {backgroundColor: "#eee"} : {backgroundColor: 'white'}}>
         <div className="d-flex justify-content-between">
-          <div className="d-flex flex-row">
+          <div className="d-flex flex-row beWide">
               {/* <img src={conversation.firstUser.pic} alt="avatar"
               className="rounded d-flex align-self-center me-3 shadow-1-strong" width="60" /> */}
               <div className="pt-1">

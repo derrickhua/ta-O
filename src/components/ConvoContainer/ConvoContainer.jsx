@@ -1,13 +1,14 @@
 import React from 'react'
 import Conversation from '../Convo/Convo'
+import './ConvoContainer.css'
 
 export default function ConvoContainer({ conversations, chat, setChat, user }) {
   return (
-    <div>
-        <h5>Member</h5>
-        <div>
-            <div>
-                <ul>
+    <div className='friendContainer'>
+        <h5>Messages</h5>
+        <div className='beWide'>
+            <div className='beWide'>
+                <ul className='messageList beWide'>
                     {conversations.map((conversation, idx) => {
                         return <Conversation key={idx} user={user} conversation={conversation} chat={chat} setChat={setChat}/>
                     })}

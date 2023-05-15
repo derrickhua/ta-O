@@ -23,3 +23,7 @@ img {
     color: #A8C990;
     cursor: pointer;
 }
+
+.card-body {
+    height: 155.19px;
+}
