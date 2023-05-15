@@ -11,22 +11,28 @@ The service primarily being sold in this market are classes provided by the guid
 
 # List of Technologies Used
 
-<img src="https://svgshare.com/i/tAG.svg" alt="html logo" style="width:70px;"/>
+<p>
+<img src="https://svgshare.com/i/tAG.svg" alt="html logo" style="width:70px; display:in-line;"/>
 <img src="https://svgshare.com/i/tAa.svg" alt="CSS logo" style="width:70px;"/>
 <img src="https://svgshare.com/i/tA4.svg" alt="JavaScript logo" style="width:70px;"/>
+</p>
 
-
+<p>
 <img src="https://svgshare.com/i/t7o.svg" alt="mongoDB logo" style="width:70px;"/>
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png" alt="express logo" style="width:70px;"/>
 <img src="https://svgshare.com/i/t8M.svg" alt="react logo" style="width:70px;"/>
 <img src="https://svgshare.com/i/tAc.svg" alt="node.js logo" style="width:70px;"/>
+</p>
 
+<p>
 <img src="https://svgshare.com/i/tAb.svg" alt="heroku logo" style="width:70px;"/>
 <img src="https://svgshare.com/i/t8L.svg" alt="aws logo" style="width:70px;"/>
 <img src="https://svgshare.com/i/tAk.svg" alt="bootstrap logo" style="width:70px;"/>
 <img src="https://svgshare.com/i/tAF.svg" alt="git logo" style="width:70px;"/>
 <img src="https://svgshare.com/i/t9F.svg" alt="JSON logo" style="width:70px;"/>
 <img src="https://svgshare.com/i/t8e.svg" alt="vscode logo" style="width:70px;"/>
+</p>
+
 ## Link: https://ta-o.herokuapp.com/
 
 # IceBox Items
