@@ -21,7 +21,7 @@ The service primarily being sold in this market are classes provided by the guid
 * React.js
 * Node.js
 * Bootstrap CSS
-![JSON](https://svgshare.com/s/t9F)
+![JSON](https://svgshare.com/i/t9F.svg)
 
 
 ## Link: https://ta-o.herokuapp.com/
