@@ -65,4 +65,6 @@ The service primarily being sold in this market are classes provided by the guid
 * Show teacher the classes that were bought by others and the details of the class
 * Add Google OAUTH, Facebook OAUTH, Yahoo OAUTH
 * Make registering system more secure, email verification, password requirements more secure
+* About Page
+* Help Page
 
