@@ -10,27 +10,27 @@ The service primarily being sold in this market are classes provided by the guid
 # Screenshots
 
 #### Home Page
-[HomePage](https://i.imgur.com/l3N2vW4.png)
+![HomePage](https://i.imgur.com/l3N2vW4.png)
 #### Login 
-[Login Modal](https://i.imgur.com/OlvGZlr.png)
+![Login Modal](https://i.imgur.com/OlvGZlr.png)
 #### Sign Up
-[Sign Up](https://i.imgur.com/4chw0ly.png)
+![Sign Up](https://i.imgur.com/4chw0ly.png)
 #### Class Creating
-[Class Creating](https://i.imgur.com/seZV3Mu.png)
+![Class Creating](https://i.imgur.com/seZV3Mu.png)
 #### View your own Classes
-[View your own Classes](https://i.imgur.com/9TFixdI.png)
+![View your own Classes](https://i.imgur.com/9TFixdI.png)
 #### Class Details Editing
-[Class Details Editing](https://i.imgur.com/d2T7MI6.png)
+![Class Details Editing](https://i.imgur.com/d2T7MI6.png)
 #### Messaging Page
-[Messaging Page](https://i.imgur.com/hsPPQUa.png)
+![Messaging Page](https://i.imgur.com/hsPPQUa.png)
 #### Shopping Cart Page 
-[Shopping Cart Page](https://i.imgur.com/iO7jLCe.png)
+![Shopping Cart Page](https://i.imgur.com/iO7jLCe.png)
 #### Order History Page
-[Order History Page](https://i.imgur.com/76F92yx.png)
+![Order History Page](https://i.imgur.com/76F92yx.png)
 #### View Booked Classes
-[View Booked/bought Classes](https://i.imgur.com/kd0x9Hw.png)
+![View Booked/bought Classes](https://i.imgur.com/kd0x9Hw.png)
 #### View and Edit Account Details
-[View Account Details](https://i.imgur.com/T6AUJ2Y.png)
+![View Account Details](https://i.imgur.com/T6AUJ2Y.png)
 
 
 # List of Technologies Used
