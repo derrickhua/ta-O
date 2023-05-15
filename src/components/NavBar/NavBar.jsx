@@ -102,7 +102,7 @@ export default function NavBar({ user, setUser, searchClasses }) {
     async function getMyClasses() {
         const classes = await classAPI.getBoughtByUser();
         setBClasses(classes)
-        let classList = bookedClasses.map((klass) => <li>{klass.name} by {klass.username}</li>)
+        let classList = classes.map((klass) => <li>{klass.item.name} by {klass.item.username}</li>)
         setClassList(classList)  
     }
 

@@ -1,4 +1,5 @@
 const Classes = require('../../models/class');
+const Orders = require('../../models/order');
 const aws = require('aws-sdk')
 require('aws-sdk/lib/maintenance_mode_message').suppress = true;
 const fs = require('fs')
@@ -64,8 +65,12 @@ async function indexUser(req, res) {
 
 async function indexBought(req, res) {
   try {
-    const classes = await Classes.find({buyer:req.user._id})
-    res.json(classes)
+    const pastOrders = await Orders.find({user:req.user._id})
+    let classesArray = []
+    pastOrders.forEach((order) => {
+      classesArray = [...classesArray, ...order.classes]
+    })
+    res.json(classesArray)
   } catch(err) {
     console.log(err)
     res.status(400).json(err)
