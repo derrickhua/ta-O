@@ -93,8 +93,8 @@ export default function ClassDetails({user, categories, setCart}) {
         }
     }
 
-    function makeAConnection() {
-        makeConnection({ firstUser: user._id, secondUser: specificClass.seller }).then(res => {
+    async function makeAConnection() {
+        await makeConnection({ firstUser: user._id, secondUser: specificClass.seller }).then(res => {
             goToMessages();
         })
     }    
@@ -224,10 +224,6 @@ export default function ClassDetails({user, categories, setCart}) {
                     </>         
                 </div> 
             }
-       
-                    {/* there should be a section for booking and for adding to cart */}
-
-
         </div>
 
 

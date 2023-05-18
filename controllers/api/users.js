@@ -87,11 +87,11 @@ function createJWT(user) {
 // in the future, ill try to make it accept or decline 
   async function makeConnection(req, res) {
     try {
+
         const existingConnection = await Connection.findOne({ $or: [{firstUser: req.user._id}, {secondUser: req.user._id}] })
         if (existingConnection) {
           existingConnection.confirmed = true
           existingConnection.save()
-          
           res.status(200).json(existingConnection)
         } else {
             const connection = await Connection.create(req.body)

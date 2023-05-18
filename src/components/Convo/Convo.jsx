@@ -2,11 +2,10 @@ import React from 'react'
 import './Convo.css'
 
 export default function Conversation({ user, conversation, chat, setChat }) {
-
+  console.log(conversation)
   return (
     <>
-
-    { conversation.firstUser._id === user._id ? 
+    { (conversation.firstUser._id === user._id || conversation.secondUser._id === user._id) ? 
     
       <li className="peopleList beWide" onClick={() => { console.log(conversation._id, "conversation id clicking"); setChat(conversation._id); console.log(chat, "clicking") }} style={ chat === conversation._id ? {backgroundColor: "#eee"} : {backgroundColor: 'white'}}>
           <div className="d-flex justify-content-between">

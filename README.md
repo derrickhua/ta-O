@@ -1,6 +1,5 @@
 # **TA-O** 
 
----
 
 # Brief Description
 A Marketplace Website designed with the intent to provide a space in which people of all kinds of professions and skill levels can congregate and share their knowledge. 
