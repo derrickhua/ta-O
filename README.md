@@ -2,9 +2,10 @@
 
 
 # Brief Description
-A Marketplace Website designed with the intent to provide a space in which people of all kinds of professions and skill levels can congregate and share their knowledge. 
+A Marketplace Website designed with the intent to provide a space in which people of all kinds of professions and skill levels can congregate and share their knowledge.
 
-The service primarily being sold in this market are classes provided by the guidance of those who choose to teach. There is no specific level at which a teacher must be at. Therefore the barrier to teaching is lower. This provides a starting point to those who would like to teach, but are not yet professionaly hired or advanced enough to be hired at insititutions.
+The service primarily being sold in this market are classes provided by the guidance of those who choose to teach. There is no specific level at which a teacher must be at. Therefore the barrier to teaching is lower. This provides a starting point to those who would like to teach, but are not yet professionally hired or advanced enough to be hired at institutions.
+
 
 # [Link](https://ta-o.herokuapp.com/)
 
